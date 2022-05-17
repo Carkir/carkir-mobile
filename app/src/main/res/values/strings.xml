@@ -18,4 +18,8 @@
     <string name="carkir_home_hint_searchbar">Cari tempat parkir</string>
     <string name="carkir_home_title_location">Tempat Parkir yang Tersedia</string>
     <string name="carkir_home_title_recent">Recent Location Parking</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
