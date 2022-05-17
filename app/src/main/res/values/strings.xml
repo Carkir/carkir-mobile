@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Carkir</string>
+
+    <!-- Navigation Bottom -->
+    <string name="carkir_navigation_home">Home</string>
+    <string name="carkir_navigation_favorite">Favorite</string>
+    <string name="carkir_navigation_history">History</string>
+
+    <!-- Onboarding -->
+    <string name="carkir_onboarding_one_title">Maksimalkan Waktu</string>
+    <string name="carkir_onboarding_one_description">Sering membuang waktu ketika mencari tempat parkir? Hilangkan kebiasaan itu dengan bantuan kami</string>
+    <string name="carkir_onboarding_two_title">Lebih Mudah</string>
+    <string name="carkir_onboarding_two_description">Mencari tempat parkir tidak mudah, tapi dengan kami kemudahan menjadi nomer satu</string>
+    <string name="carkir_onboarding_three_title">Satu Tujuan</string>
+    <string name="carkir_onboarding_three_description">Hanya melihat smartphone, kamu langsung tahu tujuan tempat parkir yang tersedia.</string>
+
+    <!-- Home -->
+    <string name="carkir_home_hint_searchbar">Cari tempat parkir</string>
+    <string name="carkir_home_title_location">Tempat Parkir yang Tersedia</string>
+    <string name="carkir_home_title_recent">Recent Location Parking</string>
+</resources>
