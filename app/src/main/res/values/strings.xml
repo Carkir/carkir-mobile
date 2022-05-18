@@ -24,4 +24,6 @@
     <string name="carkir_contentDescription_imageView_car">Car with time</string>
     <string name="carkir_contentDescription_imageView_easy">Easy to use</string>
     <string name="carkir_contentDescription_imageView_one_purpose">One purpose</string>
+    <string name="carkir_contentDescription_imageView_card_location">Location image</string>
+    <string name="carkir_contentDescription_imageView_parking">Parking space with cars</string>
 </resources>
