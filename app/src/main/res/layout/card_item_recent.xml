@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="10dp"
+    app:strokeColor="@color/black"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- MEDIA | USING CARD VIEW FOR ROUNDED IMAGE -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_thumbnail_item_recent"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/iv_thumbnail_item_recent"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                android:contentDescription="@string/carkir_contentDescription_imageView_card_location"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/avatars" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- STATUS -->
+        <TextView
+            android:id="@+id/tv_status_item_recent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/cv_thumbnail_item_recent"
+            app:layout_constraintTop_toTopOf="@id/cv_thumbnail_item_recent"
+            tools:text="Buka" />
+
+        <!-- TIME -->
+        <TextView
+            android:id="@+id/tv_time_item_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_status_item_recent"
+            app:layout_constraintStart_toEndOf="@id/tv_status_item_recent"
+            app:layout_constraintTop_toTopOf="@id/tv_status_item_recent"
+            tools:text="08.00 - 21.00 WIB" />
+
+        <!-- NAME -->
+        <TextView
+            android:id="@+id/tv_name_item_recent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_status_item_recent"
+            app:layout_constraintTop_toBottomOf="@id/tv_time_item_location"
+            tools:text="Parking Area - Pondok Indah Mall" />
+
+        <!-- TOTAL SPACE -->
+        <TextView
+            android:id="@+id/tv_space_item_recent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/cv_thumbnail_item_recent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_name_item_recent"
+            app:layout_constraintTop_toBottomOf="@id/tv_name_item_recent"
+            tools:text="108 Tempat tersedia" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
