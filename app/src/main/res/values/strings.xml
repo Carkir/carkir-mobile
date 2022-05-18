@@ -18,6 +18,16 @@
     <string name="carkir_home_hint_searchbar">Cari tempat parkir</string>
     <string name="carkir_home_title_location">Tempat Parkir yang Tersedia</string>
     <string name="carkir_home_title_recent">Recent Location Parking</string>
+  
+    <!-- Content Description -->
+    <string name="carkir_contentDescription_imageButton_next">Next page</string>
+    <string name="carkir_contentDescription_imageView_car">Car with time</string>
+    <string name="carkir_contentDescription_imageView_easy">Easy to use</string>
+    <string name="carkir_contentDescription_imageView_one_purpose">One purpose</string>
+    <string name="carkir_contentDescription_imageView_card_location">Location image</string>
+    <string name="carkir_contentDescription_imageView_parking">Parking space with cars</string>
+    
+    <!-- Title Navigation Bottom -->
     <string name="title_activity_main2">MainActivity2</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
