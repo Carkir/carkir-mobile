@@ -18,6 +18,17 @@
     <string name="carkir_home_hint_searchbar">Cari tempat parkir</string>
     <string name="carkir_home_title_location">Tempat Parkir yang Tersedia</string>
     <string name="carkir_home_title_recent">Recent Location Parking</string>
+
+    <!-- History -->
+    <string name="carkir_history_title">Riwayat Lokasi Parkir</string>
+    <string name="carkir_history_description">Penyimpanan hanya ada di local storage dan hanya kamu aja yang dapat melihat. Jika kamu menghapus aplikasi, history juga akan terhapus selamanya</string>
+
+    <!-- Favorite -->
+    <string name="carkir_favorite_title">Lokasi Parkir Favorit Kamu</string>
+    <string name="carkir_favorite_description">Penyimpanan hanya ada di local storage dan hanya kamu aja yang dapat melihat. Jika kamu menghapus aplikasi, semua tempat parkir favorit juga akan terhapus selamanya</string>
+
+    <!-- Card Item Parking -->
+    <string name="carkir_card_detail">Detail</string>
   
     <!-- Content Description -->
     <string name="carkir_contentDescription_imageButton_next">Next page</string>
@@ -26,7 +37,9 @@
     <string name="carkir_contentDescription_imageView_one_purpose">One purpose</string>
     <string name="carkir_contentDescription_imageView_card_location">Location image</string>
     <string name="carkir_contentDescription_imageView_parking">Parking space with cars</string>
-    
+    <string name="carkir_contentDescription_FloatingActionButton_favorite">Favorite location</string>
+    <string name="carkir_contentDescription_FloatingActionButton_delete">Delete All</string>
+
     <!-- Title Navigation Bottom -->
     <string name="title_activity_main2">MainActivity2</string>
     <string name="title_home">Home</string>
