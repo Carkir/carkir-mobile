@@ -13,6 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/poppins_regular</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
     </style>
 
     <!-- STYLE FOR SPLASH SCREEN -->
@@ -21,5 +22,24 @@
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
         <item name="windowSplashScreenAnimationDuration">300</item>
         <item name="postSplashScreenTheme">@style/Theme.CarkirApp</item>
+    </style>
+
+    <!-- CUSTOM STYLE NAVIGATION BOTTOM -->
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="backgroundTint">@color/dark</item>
+        <item name="itemTextAppearanceActive">@style/BottomNavigationViewTextStyle</item>
+        <item name="itemTextAppearanceInactive">@style/BottomNavigationViewTextStyle</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <!-- USE POPPINS FONT -->
+    <style name="BottomNavigationViewTextStyle">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <!-- COLOR ICON & TEXT LABEL -->
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorPrimary">@color/dark</item>
+        <item name="colorOnPrimary">@color/yellow</item>
     </style>
 </resources>
