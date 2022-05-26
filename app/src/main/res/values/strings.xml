@@ -18,18 +18,28 @@
     <string name="carkir_home_hint_searchbar">Cari tempat parkir</string>
     <string name="carkir_home_title_location">Tempat Parkir yang Tersedia</string>
     <string name="carkir_home_title_recent">Recent Location Parking</string>
+    <string name="carkir_home_recent_info_empty">Belum ada tempat yang kamu lihat</string>
 
     <!-- History -->
     <string name="carkir_history_title">Riwayat Lokasi Parkir</string>
     <string name="carkir_history_description">Penyimpanan hanya ada di local storage dan hanya kamu aja yang dapat melihat. Jika kamu menghapus aplikasi, history juga akan terhapus selamanya</string>
+    <string name="carkir_history_info_empty">Belum ada tempat yang kamu lihat</string>
+    <string name="carkir_home_info_error">Terjadi kesalahan, mohon coba lagi nanti</string>
+    <string name="carkir_home_info_loading">Sedang mengambil data, mohon tunggu</string>
 
     <!-- Favorite -->
     <string name="carkir_favorite_title">Lokasi Parkir Favorit Kamu</string>
     <string name="carkir_favorite_description">Penyimpanan hanya ada di local storage dan hanya kamu aja yang dapat melihat. Jika kamu menghapus aplikasi, semua tempat parkir favorit juga akan terhapus selamanya</string>
+    <string name="carkir_favorite_info_empty">Belum ada tempat parkir favorite</string>
+
+    <!-- Detail -->
+    <string name="carkir_detail_price_low">Rp %s untuk harga termurah</string>
+    <string name="carkir_detail_price_high">Rp %s untuk harga termahal</string>
+    <string name="carkir_detail_title_space">%d Tempat Parkir Tersedia</string>
 
     <!-- Card Item Parking -->
     <string name="carkir_card_detail">Detail</string>
-  
+
     <!-- Content Description -->
     <string name="carkir_contentDescription_imageButton_next">Next page</string>
     <string name="carkir_contentDescription_imageView_car">Car with time</string>
@@ -37,6 +47,7 @@
     <string name="carkir_contentDescription_imageView_one_purpose">One purpose</string>
     <string name="carkir_contentDescription_imageView_card_location">Location image</string>
     <string name="carkir_contentDescription_imageView_parking">Parking space with cars</string>
+    <string name="carkir_contentDescription_imageView_empty">Empty data</string>
     <string name="carkir_contentDescription_FloatingActionButton_favorite">Favorite location</string>
     <string name="carkir_contentDescription_FloatingActionButton_delete">Delete All</string>
 
