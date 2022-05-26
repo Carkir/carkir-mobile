@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/iv_thumbnail_item_location"
             android:layout_width="match_parent"
-            android:layout_height="194dp"
+            android:layout_height="156dp"
             android:contentDescription="@string/carkir_contentDescription_imageView_card_location"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
