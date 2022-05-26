@@ -16,7 +16,8 @@
             android:exported="false" />
         <activity
             android:name=".SplashScreenActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.CarkirApp.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
