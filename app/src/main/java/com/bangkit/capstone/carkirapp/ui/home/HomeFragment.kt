@@ -64,9 +64,9 @@ class HomeFragment : Fragment() {
         homeViewModel.getRecentParkingPlaces().observe(viewLifecycleOwner) { data ->
             if (data.isNotEmpty()) {
                 recentAdapter.submitList(data)
-                binding.tvEmptyRecent.isVisible = false
+                binding.ivEmptyRecent.isVisible = false
             } else {
-                binding.tvEmptyRecent.isVisible = true // On empty data
+                binding.ivEmptyRecent.isVisible = true // On empty data
             }
         }
 
