@@ -6,6 +6,7 @@ import com.bangkit.capstone.carkirapp.data.local.entity.HistoryEntity
 import com.bangkit.capstone.carkirapp.data.local.room.LocationDao
 import com.bangkit.capstone.carkirapp.data.remote.network.ApiService
 import com.bangkit.capstone.carkirapp.data.remote.response.DetailPlaceResponse
+import com.bangkit.capstone.carkirapp.data.remote.response.OccupancyPlaceResponseItem
 import com.bangkit.capstone.carkirapp.data.remote.response.PlacesResponseItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -42,6 +43,26 @@ class AppRepository(
         emit(Resource.Loading())
         try {
             val response = apiService.getPlace(name)
+            emit(Resource.Success(response))
+        } catch (e: Exception) {
+            emit(Resource.Error(e.message.toString()))
+            Log.d(TAG, e.message.toString())
+        }
+    }
+
+    /** REMOTE SOURCE
+     *
+     * GET /read/Occupancy/{:name}/{:floor}
+     *
+     * Get occupancy parking place from server
+     * */
+    fun getOccupancyParkingPlace(
+        name: String,
+        floor: Int
+    ): Flow<Resource<List<OccupancyPlaceResponseItem>>> = flow {
+        emit(Resource.Loading())
+        try {
+            val response = apiService.getOccupancyFloor(name, floor)
             emit(Resource.Success(response))
         } catch (e: Exception) {
             emit(Resource.Error(e.message.toString()))
