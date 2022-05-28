@@ -11,4 +11,6 @@
     <color name="temporary">#F3F3F3</color>
     <color name="dark">#0F0F0F</color>
     <color name="yellow">#FFF274</color>
+    <color name="red">#FF0D0D</color>
+    <color name="green">#44D600</color>
 </resources>
