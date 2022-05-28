@@ -15,10 +15,9 @@ object ApiConfig {
             .build()
     }
 
-    // TODO complete base URL API
     fun provideApiService(): ApiService {
         val retrofit = Retrofit.Builder()
-            .baseUrl("BASE_URL_API")
+            .baseUrl("https://android-api-btwe4mw5iq-et.a.run.app/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(provideOkHttpClient())
             .build()

@@ -8,13 +8,13 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_favorite"
         android:enabled="true"
         android:icon="@drawable/ic_favorite_24"
         android:title="@string/title_favorite" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_history"
         android:enabled="true"
         android:icon="@drawable/ic_history_24"
         android:title="@string/title_history" />
