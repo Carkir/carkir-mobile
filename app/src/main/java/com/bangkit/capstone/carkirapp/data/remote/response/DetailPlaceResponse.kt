@@ -10,6 +10,9 @@ data class DetailPlaceResponse(
 	@field:SerializedName("name")
 	val name: String,
 
+	@field:SerializedName("location")
+	val location: List<String>,
+
 	@field:SerializedName("time")
 	val time: String,
 
