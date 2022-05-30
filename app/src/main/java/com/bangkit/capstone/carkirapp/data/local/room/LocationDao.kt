@@ -33,10 +33,10 @@ interface LocationDao {
     @Delete
     suspend fun deleteHistory(place: HistoryEntity)
 
-    @Query("SELECT * FROM history_place ORDER BY insert_at")
+    @Query("SELECT * FROM history_place ORDER BY insert_at DESC")
     fun getAllHistory(): Flow<List<HistoryEntity>>
 
-    @Query("SELECT * FROM history_place ORDER BY insert_at LIMIT 3")
+    @Query("SELECT * FROM history_place ORDER BY insert_at DESC LIMIT 3")
     fun getRecentHistory(): Flow<List<HistoryEntity>>
 
     @Query("DELETE FROM history_place")
