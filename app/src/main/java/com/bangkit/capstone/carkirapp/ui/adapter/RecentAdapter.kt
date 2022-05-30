@@ -7,11 +7,12 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bangkit.capstone.carkirapp.R
 import com.bangkit.capstone.carkirapp.data.local.entity.HistoryEntity
 import com.bangkit.capstone.carkirapp.databinding.CardItemRecentBinding
 import com.bangkit.capstone.carkirapp.ui.home.HomeFragmentDirections
 
-class RecentAdapter() : ListAdapter<HistoryEntity, RecentAdapter.RecentViewHolder>(mDiffCallback) {
+class RecentAdapter : ListAdapter<HistoryEntity, RecentAdapter.RecentViewHolder>(mDiffCallback) {
 
     // Inflate the layout for items
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecentViewHolder {
@@ -32,8 +33,14 @@ class RecentAdapter() : ListAdapter<HistoryEntity, RecentAdapter.RecentViewHolde
         fun bind(place: HistoryEntity) {
             binding.apply {
                 tvNameItemRecent.text = place.name
-                tvTimeItemLocation.text = place.time
-                tvSpaceItemRecent.text = place.totalSpace.toString()
+                tvTimeItemLocation.text = itemView.resources.getString(
+                    R.string.carkir_card_see_at,
+                    place.insertAt
+                )
+                tvSpaceItemRecent.text = itemView.resources.getString(
+                    R.string.carkir_card_slot_parking,
+                    place.totalSpace
+                )
                 ivIconItemRecent.isVisible = false
             }
 
@@ -54,7 +61,7 @@ class RecentAdapter() : ListAdapter<HistoryEntity, RecentAdapter.RecentViewHolde
                 oldItem: HistoryEntity,
                 newItem: HistoryEntity
             ): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem.name == newItem.name
             }
 
             override fun areContentsTheSame(

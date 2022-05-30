@@ -6,9 +6,12 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bangkit.capstone.carkirapp.R
 import com.bangkit.capstone.carkirapp.data.remote.response.PlacesResponseItem
 import com.bangkit.capstone.carkirapp.databinding.CardItemLocationBinding
 import com.bangkit.capstone.carkirapp.ui.home.HomeFragmentDirections
+import com.bangkit.capstone.carkirapp.utils.decodeBase64ToBitmap
+import com.bangkit.capstone.carkirapp.utils.loadImage
 
 class PlacesAdapter() :
     ListAdapter<PlacesResponseItem, PlacesAdapter.PlacesViewHolder>(mDiffCallback) {
@@ -30,12 +33,18 @@ class PlacesAdapter() :
     class PlacesViewHolder(val binding: CardItemLocationBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(place: PlacesResponseItem) {
-            val (name, time, totalEmptySpace, status) = place
+            val (name, time, totalEmptySpace, status, image) = place
             binding.apply {
+                // TODO UNCOMMENT THE CODE IF IMAGE IS FIXED
+                // val bitmap = image.decodeBase64ToBitmap()
+                // ivThumbnailItemLocation.loadImage(itemView.context, bitmap)
                 tvNameItemLocation.text = name
                 tvStatusItemLocation.text = status
                 tvTimeItemLocation.text = time
-                tvSpaceItemLocation.text = totalEmptySpace.toString()
+                tvSpaceItemLocation.text = itemView.resources.getString(
+                    R.string.carkir_card_slot_parking,
+                    totalEmptySpace
+                )
             }
 
             // Listener to detail parking place with args name place
