@@ -43,7 +43,7 @@
                 android:id="@+id/iv_icon_floor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription=""
+                android:contentDescription="@string/carkir_contentDescription_imageView_floor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -57,14 +57,14 @@
                 app:layout_constraintBottom_toBottomOf="@id/iv_icon_floor"
                 app:layout_constraintStart_toEndOf="@id/iv_icon_floor"
                 app:layout_constraintTop_toTopOf="@id/iv_icon_floor"
-                tools:text="Lantai 1 A - C" />
+                tools:text="Lantai 1A - 1C" />
 
             <ImageView
                 android:id="@+id/iv_icon_space"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:contentDescription=""
+                android:contentDescription="@string/carkir_contentDescription_imageView_slot_availability"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tv_name_floor"
                 app:layout_constraintTop_toTopOf="parent"
@@ -89,7 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
-        android:contentDescription=""
+        android:contentDescription="@string/carkir_contentDescription_imageView_info_color"
         app:layout_constraintBottom_toBottomOf="@id/tv_title_icon_green"
         app:layout_constraintEnd_toStartOf="@id/tv_title_icon_green"
         app:layout_constraintTop_toTopOf="@id/tv_title_icon_green"
@@ -102,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Tersedia"
+        android:text="@string/carkir_parking_layout_availability_slot"
         app:layout_constraintEnd_toStartOf="@id/guidelineVertical"
         app:layout_constraintTop_toBottomOf="@id/cv_info" />
 
@@ -111,7 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:contentDescription=""
+        android:contentDescription="@string/carkir_contentDescription_imageView_info_color"
         app:layout_constraintBottom_toBottomOf="@id/tv_title_icon_red"
         app:layout_constraintStart_toEndOf="@id/guidelineVertical"
         app:layout_constraintTop_toTopOf="@id/tv_title_icon_red"
@@ -124,7 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
-        android:text="Tidak Tersedia"
+        android:text="@string/carkir_parking_layout_not_availability_slot"
         app:layout_constraintStart_toEndOf="@+id/iv_icon_red"
         app:layout_constraintTop_toBottomOf="@id/cv_info" />
 
@@ -139,6 +139,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_title_icon_green"
         tools:listitem="@layout/item_space_parking" />
+
+    <ImageView
+        android:id="@+id/iv_empty_parking"
+        android:layout_width="164dp"
+        android:layout_height="184dp"
+        android:layout_marginBottom="?attr/actionBarSize"
+        android:contentDescription="@string/carkir_contentDescription_imageView_empty"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_icon_green"
+        app:srcCompat="@drawable/ic_space_24"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tv_empty_parking_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/carkir_parking_layout_empty_slot_parking"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/iv_empty_parking"
+        app:layout_constraintStart_toStartOf="@id/iv_empty_parking"
+        app:layout_constraintTop_toBottomOf="@id/iv_empty_parking"
+        tools:visibility="visible" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="?attr/actionBarSize"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_icon_green"
+        tools:visibility="visible" />
 
     <!-- GUIDELINE FOR IMAGE -->
     <androidx.constraintlayout.widget.Guideline
