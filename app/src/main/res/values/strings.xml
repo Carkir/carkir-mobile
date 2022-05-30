@@ -32,13 +32,25 @@
     <string name="carkir_favorite_description">Storage is only in local storage and only you can see. If you delete the app, the history will also be deleted forever</string>
     <string name="carkir_favorite_info_empty">No favorite parking space yet</string>
 
-    <!-- Detail -->
+    <!-- Detail: TODO TRANSLATE TO ENGLISH -->
     <string name="carkir_detail_price_low">Rp %s for the cheapest price</string>
     <string name="carkir_detail_price_high">Rp %s for the highest price</string>
+    <string name="carkir_detail_title_space">%d Tempat Parkir Tersedia</string>
+    <string name="carkir_detail_empty_floor">Tidak ada tempat parkir</string>
+    <string name="carkir_detail_floor">Lantai %1$d (%2$s)</string>
     <string name="carkir_detail_title_space">%d Parking Available</string>
 
-    <!-- Card Item Parking -->
+    <!-- Parking Layout -->
+    <string name="carkir_parking_layout_total_empty_slot">%d Tempat tersisa</string>
+    <string name="carkir_parking_layout_name_parking">Parkir %s</string>
+    <string name="carkir_parking_layout_availability_slot">Tersedia</string>
+    <string name="carkir_parking_layout_not_availability_slot">Tidak Tersedia</string>
+    <string name="carkir_parking_layout_empty_slot_parking">Slot parkir tidak tersedia</string>
+
+    <!-- Card Item -->
     <string name="carkir_card_detail">Detail</string>
+    <string name="carkir_card_slot_parking">%d Tempat tersedia</string>
+    <string name="carkir_card_see_at">Dilihat pada %s</string>
 
     <!-- Content Description -->
     <string name="carkir_contentDescription_imageButton_next">Next page</string>
@@ -48,6 +60,9 @@
     <string name="carkir_contentDescription_imageView_card_location">Location image</string>
     <string name="carkir_contentDescription_imageView_parking">Parking space with cars</string>
     <string name="carkir_contentDescription_imageView_empty">Empty data</string>
+    <string name="carkir_contentDescription_imageView_floor">Floor and clusters</string>
+    <string name="carkir_contentDescription_imageView_slot_availability">Slot parking availability</string>
+    <string name="carkir_contentDescription_imageView_info_color">Info color slot parking</string>
     <string name="carkir_contentDescription_FloatingActionButton_favorite">Favorite location</string>
     <string name="carkir_contentDescription_FloatingActionButton_delete">Delete All</string>
 

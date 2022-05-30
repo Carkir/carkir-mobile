@@ -1,10 +1,15 @@
 package com.bangkit.capstone.carkirapp.ui.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -16,7 +21,8 @@ import com.bangkit.capstone.carkirapp.model.ViewModelFactory
 import com.bangkit.capstone.carkirapp.ui.adapter.PlacesAdapter
 import com.bangkit.capstone.carkirapp.ui.adapter.RecentAdapter
 
-// TODO TO HIDE ACTION BAR
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+
 class HomeFragment : Fragment() {
 
     // Declaration for placesAdapter
@@ -28,7 +34,10 @@ class HomeFragment : Fragment() {
 
     // View Model initialization using delegate by viewModels
     private val homeViewModel: HomeViewModel by viewModels {
-        ViewModelFactory.getInstance(requireContext())
+        ViewModelFactory.getInstance(
+            requireContext(),
+            requireContext().dataStore
+        )
     }
 
     override fun onCreateView(
@@ -37,24 +46,33 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        homeViewModel.requestToken()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // HIDE Support Action bar on Home, Favorite and History navigation
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+
         // Declare Adapter for RecyclerView place and recent
         placesAdapter = PlacesAdapter()
         val recentAdapter = RecentAdapter()
 
-        // Load data from the server to get list of parking places
-        // Response will be checking, if not null, data will be execute it based on the state
-        homeViewModel.getAllParkingPlaces().observe(viewLifecycleOwner) { response ->
-            if (response != null) {
-                when (response) {
-                    is Resource.Loading -> onLoading()
-                    is Resource.Success -> showResult(response.data)
-                    is Resource.Error -> onError()
+        // Load token from local data store
+        // This token for call private API in the server
+        homeViewModel.loadTokenFromDataStore().observe(viewLifecycleOwner) { token ->
+
+            // Load data from the server to get list of parking places
+            // Response will be checking, if not null, data will be execute it based on the state
+            homeViewModel.getAllParkingPlaces(token).observe(viewLifecycleOwner) { response ->
+                if (response != null) {
+                    when (response) {
+                        is Resource.Loading -> onLoading()
+                        is Resource.Success -> showResult(response.data)
+                        is Resource.Error -> onError()
+                    }
                 }
             }
         }
@@ -64,16 +82,12 @@ class HomeFragment : Fragment() {
         homeViewModel.getRecentParkingPlaces().observe(viewLifecycleOwner) { data ->
             if (data.isNotEmpty()) {
                 recentAdapter.submitList(data)
+                binding.ivEmptyRecent.isVisible = false
                 binding.tvEmptyRecent.isVisible = false
-            } else {
-                binding.tvEmptyRecent.isVisible = true // On empty data
+            } else { // On empty data
+                binding.ivEmptyRecent.isVisible = true
+                binding.tvEmptyRecent.isVisible = true
             }
-        }
-
-        // Move to the tab History
-        // TODO: FIX BUG CANNOT MOVE TO OTHER TAB AFTER RUN THIS LISTENER
-        binding.containerTitleRecent.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_home_to_navigation_history)
         }
 
         // Setup the adapter of Recycler View

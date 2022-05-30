@@ -1,14 +1,14 @@
-package com.bangkit.capstone.carkirapp.ui.home
+package com.bangkit.capstone.carkirapp.ui.parking
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.bangkit.capstone.carkirapp.data.AppRepository
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val repo: AppRepository) : ViewModel() {
-    fun getAllParkingPlaces(token: String) = repo.getAllParkingPlace(token).asLiveData()
-    fun getRecentParkingPlaces() = repo.getRecentParkingPlace().asLiveData()
+class ParkingViewModel(private val repo: AppRepository) : ViewModel() {
+    fun loadOccupancyFloor(token: String, name: String, floor: Int) = repo.getOccupancyParkingPlace(token, name, floor).asLiveData()
     fun loadTokenFromDataStore() = repo.getTokenFromDataStore().asLiveData()
 
     fun requestToken() {

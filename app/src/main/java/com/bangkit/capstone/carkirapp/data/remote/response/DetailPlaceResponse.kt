@@ -10,6 +10,9 @@ data class DetailPlaceResponse(
 	@field:SerializedName("name")
 	val name: String,
 
+	@field:SerializedName("location")
+	val location: List<String>,
+
 	@field:SerializedName("time")
 	val time: String,
 
@@ -20,5 +23,11 @@ data class DetailPlaceResponse(
 	val priceHigh: String,
 
 	@field:SerializedName("status")
-	val status: String
+	val status: String,
+
+	@field:SerializedName("alamat")
+	val address: String,
+
+	@field:SerializedName("image")
+	val image: String
 )

@@ -1,10 +1,14 @@
 package com.bangkit.capstone.carkirapp.ui.history
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bangkit.capstone.carkirapp.databinding.FragmentHistoryBinding
@@ -12,7 +16,8 @@ import com.bangkit.capstone.carkirapp.model.ViewModelFactory
 import com.bangkit.capstone.carkirapp.ui.adapter.HistoryAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-// TODO TO HIDE ACTION BAR
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+
 class HistoryFragment : Fragment() {
 
     // Declaration for binding view
@@ -21,7 +26,10 @@ class HistoryFragment : Fragment() {
 
     // View Model initialization using delegate by viewModels
     private val historyViewModel: HistoryViewModel by viewModels {
-        ViewModelFactory.getInstance(requireContext())
+        ViewModelFactory.getInstance(
+            requireContext(),
+            requireContext().dataStore
+        )
     }
 
     override fun onCreateView(
@@ -30,15 +38,6 @@ class HistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
-
-        // Trigger click for delete all histories
-        binding.fabDeleteAll.setOnClickListener {
-            showAlertDialog(
-                "Delete all your histories?",
-                historyViewModel.deleteAllHistory()
-            )
-        }
-
         return binding.root
     }
 
@@ -48,10 +47,7 @@ class HistoryFragment : Fragment() {
         // Declaration adapter for recycler view histories parking place
         // The lambda function is use for show alert dialog before delete the history
         val historyAdapter = HistoryAdapter { place ->
-            showAlertDialog(
-                "Are you sure want to delete?",
-                historyViewModel.deleteHistoryPlace(place)
-            )
+            historyViewModel.deleteHistoryPlace(place)
         }
 
         // Load data from the local database to get list history parking place
@@ -61,11 +57,16 @@ class HistoryFragment : Fragment() {
             if (data.isNotEmpty()) {
                 historyAdapter.submitList(data)
                 binding.emptyHistories.isVisible = false
+                binding.fabDeleteAll.isVisible = true
             } else {
+                historyAdapter.submitList(emptyList())
                 binding.emptyHistories.isVisible = true
                 binding.fabDeleteAll.isVisible = false
             }
         }
+
+        // Trigger click for delete all histories
+        binding.fabDeleteAll.setOnClickListener { showAlertDialog() }
 
         // Set adapter to recycler view
         binding.rvHistory.adapter = historyAdapter
@@ -74,11 +75,11 @@ class HistoryFragment : Fragment() {
     /**
      * Show alert dialog for delete one or all history
      * */
-    private fun showAlertDialog(title: String, action: Unit) {
+    private fun showAlertDialog() {
         MaterialAlertDialogBuilder(requireContext())
-            .setTitle(title)
+            .setTitle("Delete all your histories?")
             .setMessage("Your history will be deleted and cannot to restore it.")
-            .setPositiveButton("Delete") { _, _ -> action }
+            .setPositiveButton("Delete") { _, _ -> historyViewModel.deleteAllHistory() }
             .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
             .show()
     }
