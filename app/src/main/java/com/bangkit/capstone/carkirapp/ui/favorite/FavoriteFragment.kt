@@ -1,17 +1,22 @@
 package com.bangkit.capstone.carkirapp.ui.favorite
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bangkit.capstone.carkirapp.databinding.FragmentFavoriteBinding
 import com.bangkit.capstone.carkirapp.model.ViewModelFactory
 import com.bangkit.capstone.carkirapp.ui.adapter.FavoriteAdapter
 
-// TODO TO HIDE ACTION BAR
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+
 class FavoriteFragment : Fragment() {
 
     // Declaration for binding view
@@ -20,7 +25,10 @@ class FavoriteFragment : Fragment() {
 
     // View Model initialization using delegate by viewModels
     private val favoriteViewModel: FavoriteViewModel by viewModels {
-        ViewModelFactory.getInstance(requireContext())
+        ViewModelFactory.getInstance(
+            requireContext(),
+            requireContext().dataStore
+        )
     }
 
     override fun onCreateView(
