@@ -14,5 +14,8 @@ data class PlacesResponseItem(
 	val totalEmptySpace: Int,
 
 	@field:SerializedName("status")
-	val status: String
+	val status: String,
+
+	@field:SerializedName("image")
+	val image: String
 )

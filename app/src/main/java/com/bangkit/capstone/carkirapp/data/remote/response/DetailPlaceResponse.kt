@@ -23,5 +23,11 @@ data class DetailPlaceResponse(
 	val priceHigh: String,
 
 	@field:SerializedName("status")
-	val status: String
+	val status: String,
+
+	@field:SerializedName("alamat")
+	val address: String,
+
+	@field:SerializedName("image")
+	val image: String
 )
