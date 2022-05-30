@@ -1,6 +1,7 @@
 package com.bangkit.capstone.carkirapp.data
 
 import android.util.Log
+import com.bangkit.capstone.carkirapp.data.local.datastore.TokenPreference
 import com.bangkit.capstone.carkirapp.data.local.entity.FavoriteEntity
 import com.bangkit.capstone.carkirapp.data.local.entity.HistoryEntity
 import com.bangkit.capstone.carkirapp.data.local.room.LocationDao
@@ -8,13 +9,30 @@ import com.bangkit.capstone.carkirapp.data.remote.network.ApiService
 import com.bangkit.capstone.carkirapp.data.remote.response.DetailPlaceResponse
 import com.bangkit.capstone.carkirapp.data.remote.response.OccupancyPlaceResponseItem
 import com.bangkit.capstone.carkirapp.data.remote.response.PlacesResponseItem
+import com.bangkit.capstone.carkirapp.model.AndroidModel
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class AppRepository(
     private val apiService: ApiService,
-    private val locationDao: LocationDao
+    private val locationDao: LocationDao,
+    private val preference: TokenPreference
 ) {
+
+    /** REMOTE SOURCE
+     *
+     * POST /tokenizable
+     * requestBody: { isMobile: true }
+     *
+     * Get token from server and save to the datastore
+     * */
+    suspend fun tokenKey() {
+        coroutineScope {
+            val response = apiService.getToken(AndroidModel())
+            preference.updateToken(response.accessToken)
+        }
+    }
 
     /** REMOTE SOURCE
      *
@@ -22,10 +40,10 @@ class AppRepository(
      *
      * Get all parking places
      */
-    fun getAllParkingPlace(): Flow<Resource<List<PlacesResponseItem>>> = flow {
+    fun getAllParkingPlace(token: String): Flow<Resource<List<PlacesResponseItem>>> = flow {
         emit(Resource.Loading())
         try {
-            val response = apiService.getAllPlace()
+            val response = apiService.getAllPlace(addPrefixBearer(token))
             emit(Resource.Success(response))
         } catch (e: Exception) {
             emit(Resource.Error(e.message.toString()))
@@ -39,10 +57,10 @@ class AppRepository(
      *
      * Get detail parking place from server
      * */
-    fun getParkingPlace(name: String): Flow<Resource<DetailPlaceResponse>> = flow {
+    fun getParkingPlace(token: String, name: String): Flow<Resource<DetailPlaceResponse>> = flow {
         emit(Resource.Loading())
         try {
-            val response = apiService.getPlace(name)
+            val response = apiService.getPlace(addPrefixBearer(token), name)
             emit(Resource.Success(response))
         } catch (e: Exception) {
             emit(Resource.Error(e.message.toString()))
@@ -57,18 +75,25 @@ class AppRepository(
      * Get occupancy parking place from server
      * */
     fun getOccupancyParkingPlace(
+        token: String,
         name: String,
         floor: Int
     ): Flow<Resource<List<OccupancyPlaceResponseItem>>> = flow {
         emit(Resource.Loading())
         try {
-            val response = apiService.getOccupancyFloor(name, floor)
+            val response = apiService.getOccupancyFloor(addPrefixBearer(token), name, floor)
             emit(Resource.Success(response))
         } catch (e: Exception) {
             emit(Resource.Error(e.message.toString()))
             Log.d(TAG, e.message.toString())
         }
     }
+
+    /** LOCAL SOURCE
+     *
+     * Get new token from datastore
+     * */
+    fun getTokenFromDataStore(): Flow<String> = preference.loadToken()
 
     /** LOCAL SOURCE
      *
@@ -128,6 +153,11 @@ class AppRepository(
         locationDao.deleteAllHistory()
     }
 
+    /**
+     * Add prefix "Bearer" to token
+     * */
+    private fun addPrefixBearer(token: String): String = "Bearer $token"
+
     companion object {
         const val TAG = "AppRepository"
 
@@ -135,10 +165,11 @@ class AppRepository(
         private var instance: AppRepository? = null
         fun getInstance(
             apiService: ApiService,
-            locationDao: LocationDao
+            locationDao: LocationDao,
+            preference: TokenPreference
         ): AppRepository =
             instance ?: synchronized(this) {
-                instance ?: AppRepository(apiService, locationDao)
+                instance ?: AppRepository(apiService, locationDao, preference)
             }.also { instance = it }
     }
 }
