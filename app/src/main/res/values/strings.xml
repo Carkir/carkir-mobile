@@ -7,38 +7,38 @@
     <string name="carkir_navigation_history">History</string>
 
     <!-- Onboarding -->
-    <string name="carkir_onboarding_one_title">Maksimalkan Waktu</string>
-    <string name="carkir_onboarding_one_description">Sering membuang waktu ketika mencari tempat parkir? Hilangkan kebiasaan itu dengan bantuan kami</string>
-    <string name="carkir_onboarding_two_title">Lebih Mudah</string>
-    <string name="carkir_onboarding_two_description">Mencari tempat parkir tidak mudah, tapi dengan kami kemudahan menjadi nomer satu</string>
-    <string name="carkir_onboarding_three_title">Satu Tujuan</string>
-    <string name="carkir_onboarding_three_description">Hanya melihat smartphone, kamu langsung tahu tujuan tempat parkir yang tersedia.</string>
+    <string name="carkir_onboarding_one_title">Optimize Your Time</string>
+    <string name="carkir_onboarding_one_description">Don\'t want to waste your time looking for a parking space? We are here to help you solve the problem!</string>
+    <string name="carkir_onboarding_two_title">Easier</string>
+    <string name="carkir_onboarding_two_description">Having trouble finding a parking space? We make it easy for you!</string>
+    <string name="carkir_onboarding_three_title">One Destination</string>
+    <string name="carkir_onboarding_three_description">Just looking at the smartphone, you will know the destination of the available parking space.</string>
 
     <!-- Home -->
-    <string name="carkir_home_hint_searchbar">Cari tempat parkir</string>
-    <string name="carkir_home_title_location">Tempat Parkir yang Tersedia</string>
+    <string name="carkir_home_hint_searchbar">Find a Parking Space</string>
+    <string name="carkir_home_title_location">Available Parking Space</string>
     <string name="carkir_home_title_recent">Recent Location Parking</string>
-    <string name="carkir_home_recent_info_empty">Belum ada tempat yang kamu lihat</string>
+    <string name="carkir_home_recent_info_empty">There\'s no place you\'ve seen yet</string>
 
     <!-- History -->
-    <string name="carkir_history_title">Riwayat Lokasi Parkir</string>
-    <string name="carkir_history_description">Penyimpanan hanya ada di local storage dan hanya kamu aja yang dapat melihat. Jika kamu menghapus aplikasi, history juga akan terhapus selamanya</string>
-    <string name="carkir_history_info_empty">Belum ada tempat yang kamu lihat</string>
-    <string name="carkir_home_info_error">Terjadi kesalahan, mohon coba lagi nanti</string>
-    <string name="carkir_home_info_loading">Sedang mengambil data, mohon tunggu</string>
+    <string name="carkir_history_title">Parking Location History</string>
+    <string name="carkir_history_description">Storage is only in local storage and only you can see. If you delete the app, the history will also be deleted forever</string>
+    <string name="carkir_history_info_empty">There\'s no place you\'ve seen yet</string>
+    <string name="carkir_home_info_error">An error occurred, please try again later</string>
+    <string name="carkir_home_info_loading">Retrieving data, please wait</string>
 
     <!-- Favorite -->
-    <string name="carkir_favorite_title">Lokasi Parkir Favorit Kamu</string>
-    <string name="carkir_favorite_description">Penyimpanan hanya ada di local storage dan hanya kamu aja yang dapat melihat. Jika kamu menghapus aplikasi, semua tempat parkir favorit juga akan terhapus selamanya</string>
-    <string name="carkir_favorite_info_empty">Belum ada tempat parkir favorite</string>
+    <string name="carkir_favorite_title">Your Favorite Parking Location</string>
+    <string name="carkir_favorite_description">Storage is only in local storage and only you can see. If you delete the app, the history will also be deleted forever</string>
+    <string name="carkir_favorite_info_empty">No favorite parking space yet</string>
 
-    <!-- Detail -->
-    <string name="carkir_detail_price_low">Rp %s untuk harga termurah</string>
-    <string name="carkir_detail_price_high">Rp %s untuk harga termahal</string>
+    <!-- Detail: TODO TRANSLATE TO ENGLISH -->
+    <string name="carkir_detail_price_low">Rp %s for the cheapest price</string>
+    <string name="carkir_detail_price_high">Rp %s for the highest price</string>
     <string name="carkir_detail_title_space">%d Tempat Parkir Tersedia</string>
     <string name="carkir_detail_empty_floor">Tidak ada tempat parkir</string>
     <string name="carkir_detail_floor">Lantai %1$d (%2$s)</string>
-    <string name="carkir_detail_availability">%d tempat tersisa</string>
+    <string name="carkir_detail_title_space">%d Parking Available</string>
 
     <!-- Parking Layout -->
     <string name="carkir_parking_layout_total_empty_slot">%d Tempat tersisa</string>
