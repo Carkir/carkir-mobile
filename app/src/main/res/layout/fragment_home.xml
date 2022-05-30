@@ -33,7 +33,6 @@
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
-            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -43,6 +42,7 @@
                 android:id="@+id/et_home_search"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:focusable="false"
                 android:hint="@string/carkir_home_hint_searchbar"
                 android:imeOptions="actionSearch"
                 android:inputType="text" />
@@ -123,40 +123,23 @@
             app:layout_constraintTop_toBottomOf="@id/rv_location">
 
             <!-- TITLE RECENT -->
-            <LinearLayout
-                android:id="@+id/container_title_recent"
+            <TextView
+                android:id="@+id/tv_title_recent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_title_recent"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/carkir_home_title_recent"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                    android:textStyle="bold" />
-
-                <ImageButton
-                    android:id="@+id/ib_detail_list_history"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@string/carkir_contentDescription_imageButton_next"
-                    app:srcCompat="@drawable/ic_arrow_24" />
-            </LinearLayout>
+                android:text="@string/carkir_home_title_recent"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textStyle="bold" />
 
             <!-- LIST RECENT HISTORY LOCATION -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_recent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/container_title_recent"
+                android:layout_below="@id/tv_title_recent"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
@@ -171,9 +154,9 @@
                 android:layout_height="100dp"
                 android:layout_centerInParent="true"
                 android:contentDescription="@string/carkir_home_recent_info_empty"
-                app:srcCompat="@drawable/ic_empty_history"
                 android:visibility="gone"
-                tools:visibility="visible"/>
+                app:srcCompat="@drawable/ic_empty_history"
+                tools:visibility="visible" />
 
             <!-- EMPTY HISTORIES TEXT -->
             <TextView
