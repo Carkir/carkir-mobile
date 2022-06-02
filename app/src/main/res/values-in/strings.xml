@@ -38,6 +38,8 @@
     <string name="carkir_detail_title_space">%d Tempat Parkir Tersedia</string>
     <string name="carkir_detail_empty_floor">Tidak ada tempat parkir</string>
     <string name="carkir_detail_floor">Lantai %1$d (%2$s)</string>
+    <string name="carkir_detail_title_offline">Tidak ada internet</string>
+    <string name="carkir_detail_description_offline">Kamu harus terhubung internet untuk mendapatkan data terbaru</string>
 
     <!-- Parking Layout -->
     <string name="carkir_parking_layout_total_empty_slot">%d Tempat tersisa</string>
@@ -62,6 +64,7 @@
     <string name="carkir_contentDescription_imageView_floor">Floor and clusters</string>
     <string name="carkir_contentDescription_imageView_slot_availability">Slot parking availability</string>
     <string name="carkir_contentDescription_imageView_info_color">Info color slot parking</string>
+    <string name="carkir_contentDescription_imageView_offline">You\'re offline</string>
     <string name="carkir_contentDescription_FloatingActionButton_favorite">Favorite location</string>
     <string name="carkir_contentDescription_FloatingActionButton_delete">Delete All</string>
 
@@ -70,4 +73,8 @@
     <string name="title_home">Home</string>
     <string name="title_favorite">Favorite</string>
     <string name="title_history">History</string>
+
+    <!-- Title Support Action Bar -->
+    <string name="carkir_title_detail">Detail Tempat Parkir</string>
+    <string name="carkir_title_parking_layout">Tata Letak Tempat Parkir</string>
 </resources>

@@ -36,15 +36,17 @@
     <string name="carkir_detail_price_low">Rp %s for the cheapest price</string>
     <string name="carkir_detail_price_high">Rp %s for the highest price</string>
     <string name="carkir_detail_empty_floor">No parking space</string>
-    <string name="carkir_detail_floor">Lantai %1$d (%2$s)</string>
+    <string name="carkir_detail_floor">Level %1$d (%2$s)</string>
     <string name="carkir_detail_title_space">%d Parking Available</string>
+    <string name="carkir_detail_title_offline">You\'re Offline</string>
+    <string name="carkir_detail_description_offline">You have use internet to refresh the data</string>
 
     <!-- Parking Layout -->
     <string name="carkir_parking_layout_total_empty_slot">%d Tempat tersisa</string>
     <string name="carkir_parking_layout_name_parking">Parkir %s</string>
     <string name="carkir_parking_layout_availability_slot">Tersedia</string>
     <string name="carkir_parking_layout_not_availability_slot">Tidak Tersedia</string>
-    <string name="carkir_parking_layout_empty_slot_parking">Slot parkir tidak tersedia</string>
+    <string name="carkir_parking_layout_empty_slot_parking">Parking layout not available</string>
 
     <!-- Card Item -->
     <string name="carkir_card_detail">Detail</string>
@@ -62,6 +64,7 @@
     <string name="carkir_contentDescription_imageView_floor">Floor and clusters</string>
     <string name="carkir_contentDescription_imageView_slot_availability">Slot parking availability</string>
     <string name="carkir_contentDescription_imageView_info_color">Info color slot parking</string>
+    <string name="carkir_contentDescription_imageView_offline">You\'re offline</string>
     <string name="carkir_contentDescription_FloatingActionButton_favorite">Favorite location</string>
     <string name="carkir_contentDescription_FloatingActionButton_delete">Delete All</string>
 
@@ -70,4 +73,8 @@
     <string name="title_home">Home</string>
     <string name="title_favorite">Favorite</string>
     <string name="title_history">History</string>
+
+    <!-- Title Support Action Bar -->
+    <string name="carkir_title_detail">Detail Parking Place</string>
+    <string name="carkir_title_parking_layout">Parking Layout</string>
 </resources>
