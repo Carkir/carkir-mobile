@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarkirApp">
         <activity
+            android:name=".OnBoardingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.parking.ParkingLayoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.detail.DetailPlaceActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
