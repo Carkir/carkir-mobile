@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.detail.DetailFragment">
+    tools:context=".ui.detail.DetailPlaceActivity">
 
     <!-- MEDIA -->
     <ImageView
         android:id="@+id/iv_place_detail"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="0dp"
         android:contentDescription="@string/carkir_contentDescription_imageView_card_location"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guidelineHorizontalFirst"
         tools:srcCompat="@tools:sample/avatars" />
 
     <!-- STATUS -->
@@ -82,7 +83,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_address_place_detail"
-        app:strokeColor="@android:color/black"
+        app:strokeColor="@color/dark"
         app:strokeWidth="1dp">
 
         <LinearLayout
@@ -143,6 +144,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_total_empty_space_place_detail"
         tools:listitem="@layout/card_item_parking" />
 
+    <!-- STATE EMPTY LIST -->
     <TextView
         android:id="@+id/tv_empty_clusters_parking"
         android:layout_width="match_parent"
@@ -164,12 +166,77 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="?attr/actionBarSize"
+        android:layout_marginBottom="24dp"
         android:contentDescription="@string/carkir_contentDescription_FloatingActionButton_favorite"
         app:backgroundTint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_favorite_border_24"
         app:tint="@android:color/holo_red_light" />
+
+    <!-- HANDLE STATE LOADING & ERROR -->
+    <RelativeLayout
+        android:id="@+id/container_state"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/colorBackgroundFloating"
+        android:elevation="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_error_detail"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/carkir_contentDescription_imageView_offline"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_offline_custom" />
+
+        <TextView
+            android:id="@+id/tv_error_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_error_detail"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/carkir_detail_title_offline"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_error_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_error_detail"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/carkir_detail_description_offline"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <!-- GUIDELINE FOR IMAGE -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHorizontalFirst"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
