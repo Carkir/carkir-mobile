@@ -15,12 +15,13 @@
         <ImageView
             android:id="@+id/iv_home_banner"
             android:layout_width="0dp"
-            android:layout_height="156dp"
+            android:layout_height="0dp"
             android:contentDescription="@string/carkir_contentDescription_imageView_parking"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/guidelineHorizontalFirst"
             app:srcCompat="@drawable/parking_home_banner" />
 
         <!-- SEARCH BAR -->
@@ -76,38 +77,34 @@
             app:layout_constraintTop_toBottomOf="@id/tv_title_location"
             tools:listitem="@layout/card_item_location" />
 
-        <!-- HANDLE ERROR -->
-        <LinearLayout
-            android:id="@+id/container_unexpected"
-            android:layout_width="match_parent"
+        <!-- HANDLE LOADING AND ERROR -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="24dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
             android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/container_recent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title_location"
-            tools:visibility="visible">
+            tools:visibility="visible" />
 
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/tv_message_unexpected"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                tools:text="Mohon periksa Internet kamu." />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_message_unexpected"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/progressBar"
+            app:layout_constraintStart_toStartOf="@id/progressBar"
+            app:layout_constraintTop_toBottomOf="@id/progressBar"
+            tools:text="Mohon periksa Internet kamu."
+            tools:visibility="visible" />
 
         <!-- CONTAINER RECENT -->
         <RelativeLayout
@@ -115,7 +112,6 @@
             android:layout_width="0dp"
             android:layout_height="300dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="?attr/actionBarSize"
             android:background="@drawable/box_recent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -174,14 +170,13 @@
 
         <!-- GUIDELINE FOR IMAGE -->
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineHorizontal"
+            android:id="@+id/guidelineHorizontalFirst"
             android:layout_width="wrap_content"
             android:layout_height="64dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintGuide_percent="0.6"
+            app:layout_constraintGuide_percent="0.25"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </ScrollView>
