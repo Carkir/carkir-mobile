@@ -4,16 +4,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.bangkit.capstone.carkirapp.data.AppRepository
-import com.bangkit.capstone.carkirapp.data.local.entity.FavoriteEntity
+import com.bangkit.capstone.carkirapp.data.local.entity.PlacesEntity
 import kotlinx.coroutines.launch
 
 class FavoriteViewModel(private val repo: AppRepository) : ViewModel() {
+    fun loadAllFavoritePlaces() = repo.getFavoritesPlace().asLiveData()
 
-    fun loadAllFavoritePlaces() = repo.getAllFavoritePlaces().asLiveData()
-
-    fun deleteFavoritePlace(place: FavoriteEntity) {
+    fun removeFavoritePlaces(place: PlacesEntity, newState: Boolean) {
         viewModelScope.launch {
-            repo.deleteFavoritePlace(place)
+            place.isFavorite = newState
+            repo.updateFavorite(place)
         }
     }
 }
