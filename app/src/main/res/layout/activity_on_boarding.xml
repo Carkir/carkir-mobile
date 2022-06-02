@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_on_boarding_scene"
+    tools:context=".OnBoardingActivity">
+
+    <!-- ON BOARDING 1 -->
+    <ImageView
+        android:id="@+id/iv_1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:contentDescription="@string/carkir_contentDescription_imageView_car"
+        android:src="@drawable/ic_optimize_time"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:alpha="0"
+        android:text="@string/carkir_onboarding_one_title"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_1" />
+
+    <TextView
+        android:id="@+id/tv_description_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:alpha="0"
+        android:text="@string/carkir_onboarding_one_description"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_title_1"
+        app:layout_constraintStart_toStartOf="@+id/tv_title_1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_1" />
+
+    <!-- ON BOARDING 2 -->
+    <ImageView
+        android:id="@+id/iv_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:contentDescription="@string/carkir_contentDescription_imageView_easy"
+        android:src="@drawable/ic_easier"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:alpha="0"
+        android:text="@string/carkir_onboarding_two_title"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_2" />
+
+    <TextView
+        android:id="@+id/tv_description_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:alpha="0"
+        android:text="@string/carkir_onboarding_two_description"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_title_2"
+        app:layout_constraintStart_toStartOf="@+id/tv_title_2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_2" />
+
+    <!-- ON BOARDING 3 -->
+    <ImageView
+        android:id="@+id/iv_3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:contentDescription="@string/carkir_contentDescription_imageView_one_purpose"
+        android:src="@drawable/ic_one_destination"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:alpha="0"
+        android:text="@string/carkir_onboarding_three_title"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_3" />
+
+    <TextView
+        android:id="@+id/tv_description_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:alpha="0"
+        android:text="@string/carkir_onboarding_three_description"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_title_3"
+        app:layout_constraintStart_toStartOf="@+id/tv_title_3"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_3" />
+
+    <!-- POSITION SLIDE -->
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/position1"
+        android:layout_width="64dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:alpha="0"
+        app:altSrc="@drawable/ic_circle_long"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal2"
+        app:srcCompat="@drawable/ic_circle_long" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/position2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:alpha="0"
+        app:altSrc="@drawable/ic_circle_long"
+        app:layout_constraintBottom_toBottomOf="@+id/position1"
+        app:layout_constraintEnd_toStartOf="@+id/position3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/position1"
+        app:layout_constraintTop_toTopOf="@+id/position1"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_circle_long" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/position3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:alpha="0"
+        app:altSrc="@drawable/ic_circle_long"
+        app:layout_constraintBottom_toBottomOf="@+id/position2"
+        app:layout_constraintStart_toEndOf="@+id/position2"
+        app:layout_constraintTop_toTopOf="@+id/position2"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_circle_long" />
+
+    <ImageButton
+        android:id="@+id/ib_next"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginEnd="24dp"
+        android:alpha="0"
+        android:background="@drawable/roundcorner"
+        android:contentDescription="@string/carkir_contentDescription_imageButton_next"
+        android:src="@drawable/ic_arrow_24"
+        app:layout_constraintBottom_toBottomOf="@id/position1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/position1" />
+
+    <Button
+        android:id="@+id/btn_get_started"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:alpha="0"
+        android:background="@drawable/roundcorner"
+        android:text="Cari tempat parkir"
+        android:textAllCaps="false"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/position1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/position1" />
+
+    <!-- GUIDELINE FOR IMAGE -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.6"
+        app:layout_constraintStart_toStartOf="parent" />
+    <!-- GUIDELINE FOR SLIDER -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHorizontal2"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.8"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
