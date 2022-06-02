@@ -1,10 +1,9 @@
 package com.bangkit.capstone.carkirapp.data
 
 import android.util.Log
-import com.bangkit.capstone.carkirapp.data.local.datastore.TokenPreference
-import com.bangkit.capstone.carkirapp.data.local.entity.FavoriteEntity
-import com.bangkit.capstone.carkirapp.data.local.entity.HistoryEntity
-import com.bangkit.capstone.carkirapp.data.local.room.LocationDao
+import com.bangkit.capstone.carkirapp.data.local.datastore.DataPreference
+import com.bangkit.capstone.carkirapp.data.local.entity.PlacesEntity
+import com.bangkit.capstone.carkirapp.data.local.room.PlaceDao
 import com.bangkit.capstone.carkirapp.data.remote.network.ApiService
 import com.bangkit.capstone.carkirapp.data.remote.response.DetailPlaceResponse
 import com.bangkit.capstone.carkirapp.data.remote.response.OccupancyPlaceResponseItem
@@ -12,12 +11,13 @@ import com.bangkit.capstone.carkirapp.data.remote.response.PlacesResponseItem
 import com.bangkit.capstone.carkirapp.model.AndroidModel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 
 class AppRepository(
     private val apiService: ApiService,
-    private val locationDao: LocationDao,
-    private val preference: TokenPreference
+    private val placeDao: PlaceDao,
+    private val preference: DataPreference
 ) {
 
     /** REMOTE SOURCE
@@ -29,8 +29,12 @@ class AppRepository(
      * */
     suspend fun tokenKey() {
         coroutineScope {
-            val response = apiService.getToken(AndroidModel())
-            preference.updateToken(response.accessToken)
+            try {
+                val response = apiService.getToken(AndroidModel())
+                preference.updateToken(response.accessToken)
+            } catch (e: Exception) {
+                Log.e(TAG, e.toString())
+            }
         }
     }
 
@@ -57,10 +61,12 @@ class AppRepository(
      *
      * Get detail parking place from server
      * */
-    fun getParkingPlace(token: String, name: String): Flow<Resource<DetailPlaceResponse>> = flow {
+    fun getPlaceDetail(token: String, name: String): Flow<Resource<DetailPlaceResponse>> = flow {
         emit(Resource.Loading())
+        val dataOnDB = placeDao.getPlace(name).first()
         try {
             val response = apiService.getPlace(addPrefixBearer(token), name)
+            response.isFavorite = dataOnDB?.isFavorite ?: false
             emit(Resource.Success(response))
         } catch (e: Exception) {
             emit(Resource.Error(e.message.toString()))
@@ -97,61 +103,61 @@ class AppRepository(
 
     /** LOCAL SOURCE
      *
-     * Get three recent parking places from database
+     * Insert data places to database
      * */
-    fun getRecentParkingPlace(): Flow<List<HistoryEntity>> = locationDao.getRecentHistory()
+    suspend fun insertPlaces(place: PlacesEntity) {
+        placeDao.insertPlace(place)
+    }
+
+    /** LOCAL SOURCE
+     *
+     * Update isAlreadySee value on specific data place
+     * */
+    suspend fun updateHistory(place: PlacesEntity) {
+        placeDao.updatePlaces(place)
+    }
+
+    /** LOCAL SOURCE
+     *
+     * Update isFavorite value on specific data place
+     * */
+    suspend fun updateFavorite(place: PlacesEntity) {
+        placeDao.updatePlaces(place)
+    }
+
+    /** LOCAL SOURCE
+     *
+     * Update place data where specific name to change isFavorite value
+     */
+    suspend fun updateFavoriteDetail(name: String, newState: Boolean) {
+        placeDao.updateFavoritePlace(name, newState)
+    }
+
+    /** LOCAL SOURCE
+     *
+     * Update all place where isAlreadySee field have true value to false
+     */
+    suspend fun deleteHistories() {
+        placeDao.removeHistories()
+    }
 
     /** LOCAL SOURCE
      *
      * Get all favorite place from database
      * */
-    fun getAllFavoritePlaces(): Flow<List<FavoriteEntity>> = locationDao.getAllFavorite()
-
-    /** LOCAL SOURCE
-     *
-     * Add favorite place to database
-     * */
-    suspend fun insertFavoritePlace(place: FavoriteEntity) {
-        locationDao.insertFavorite(place)
-    }
-
-    /** LOCAL SOURCE
-     *
-     * Delete favorite place on database
-     * */
-    suspend fun deleteFavoritePlace(place: FavoriteEntity) {
-        locationDao.deleteFavorite(place)
-    }
-
-    /** LOCAL SOURCE
-     *
-     * Insert history place to database
-     * */
-    suspend fun addPlaceToHistory(place: HistoryEntity) {
-        locationDao.insertHistory(place)
-    }
+    fun getFavoritesPlace(): Flow<List<PlacesEntity>> = placeDao.getFavorites()
 
     /** LOCAL SOURCE
      *
      * Get all history place from database
      * */
-    fun getAllHistoryPlaces(): Flow<List<HistoryEntity>> = locationDao.getAllHistory()
+    fun getHistoriesPlace(): Flow<List<PlacesEntity>> = placeDao.getHistories()
 
     /** LOCAL SOURCE
      *
-     * Delete one history on database
+     * Get three recent parking places from database
      * */
-    suspend fun deleteHistoryPlace(place: HistoryEntity) {
-        locationDao.deleteHistory(place)
-    }
-
-    /** LOCAL SOURCE
-     *
-     * Delete all history on database
-     */
-    suspend fun deleteAllHistory() {
-        locationDao.deleteAllHistory()
-    }
+    fun getRecentPlaces(): Flow<List<PlacesEntity>> = placeDao.getRecentPlaces()
 
     /**
      * Add prefix "Bearer" to token
@@ -165,11 +171,11 @@ class AppRepository(
         private var instance: AppRepository? = null
         fun getInstance(
             apiService: ApiService,
-            locationDao: LocationDao,
-            preference: TokenPreference
+            placeDao: PlaceDao,
+            preference: DataPreference
         ): AppRepository =
             instance ?: synchronized(this) {
-                instance ?: AppRepository(apiService, locationDao, preference)
+                instance ?: AppRepository(apiService, placeDao, preference)
             }.also { instance = it }
     }
 }
