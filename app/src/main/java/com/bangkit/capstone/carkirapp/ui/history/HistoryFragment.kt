@@ -47,7 +47,7 @@ class HistoryFragment : Fragment() {
         // Declaration adapter for recycler view histories parking place
         // The lambda function is use for show alert dialog before delete the history
         val historyAdapter = HistoryAdapter { place ->
-            historyViewModel.deleteHistoryPlace(place)
+            historyViewModel.removeHistoryPlace(place, false)
         }
 
         // Load data from the local database to get list history parking place
@@ -79,7 +79,7 @@ class HistoryFragment : Fragment() {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Delete all your histories?")
             .setMessage("Your history will be deleted and cannot to restore it.")
-            .setPositiveButton("Delete") { _, _ -> historyViewModel.deleteAllHistory() }
+            .setPositiveButton("Delete") { _, _ -> historyViewModel.removeHistories() }
             .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
             .show()
     }
