@@ -13,7 +13,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, OnBoardingActivity::class.java))
         finish()
         installSplashScreen()
         super.onCreate(savedInstanceState)
