@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.capstone.carkirapp.R
-import com.bangkit.capstone.carkirapp.data.local.entity.HistoryEntity
+import com.bangkit.capstone.carkirapp.data.local.entity.PlacesEntity
 import com.bangkit.capstone.carkirapp.databinding.CardItemRecentBinding
 import com.bangkit.capstone.carkirapp.ui.home.HomeFragmentDirections
 
-class RecentAdapter : ListAdapter<HistoryEntity, RecentAdapter.RecentViewHolder>(mDiffCallback) {
+class RecentAdapter : ListAdapter<PlacesEntity, RecentAdapter.RecentViewHolder>(mDiffCallback) {
 
     // Inflate the layout for items
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecentViewHolder {
@@ -30,7 +30,7 @@ class RecentAdapter : ListAdapter<HistoryEntity, RecentAdapter.RecentViewHolder>
     // Binding data item to view layout
     class RecentViewHolder(val binding: CardItemRecentBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(place: HistoryEntity) {
+        fun bind(place: PlacesEntity) {
             binding.apply {
                 tvNameItemRecent.text = place.name
                 tvTimeItemLocation.text = itemView.resources.getString(
@@ -46,7 +46,8 @@ class RecentAdapter : ListAdapter<HistoryEntity, RecentAdapter.RecentViewHolder>
 
             // Listener to detail parking place with args name place
             itemView.setOnClickListener {
-                val action = HomeFragmentDirections.actionNavigationHomeToDetailFragment(place.name)
+                val action =
+                    HomeFragmentDirections.actionNavigationHomeToDetailPlaceActivity(place.name)
                 it.findNavController().navigate(action)
             }
         }
@@ -56,17 +57,17 @@ class RecentAdapter : ListAdapter<HistoryEntity, RecentAdapter.RecentViewHolder>
      * Anonymous class for compare the oldList and newList in ListAdapter
      * */
     companion object {
-        private val mDiffCallback = object : DiffUtil.ItemCallback<HistoryEntity>() {
+        private val mDiffCallback = object : DiffUtil.ItemCallback<PlacesEntity>() {
             override fun areItemsTheSame(
-                oldItem: HistoryEntity,
-                newItem: HistoryEntity
+                oldItem: PlacesEntity,
+                newItem: PlacesEntity
             ): Boolean {
                 return oldItem.name == newItem.name
             }
 
             override fun areContentsTheSame(
-                oldItem: HistoryEntity,
-                newItem: HistoryEntity
+                oldItem: PlacesEntity,
+                newItem: PlacesEntity
             ): Boolean {
                 return oldItem == newItem
             }

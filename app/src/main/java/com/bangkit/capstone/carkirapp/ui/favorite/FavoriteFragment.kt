@@ -46,7 +46,7 @@ class FavoriteFragment : Fragment() {
         // Declaration adapter for recycler view favorite parking place
         // The lambda function is use for remove place
         val favoriteAdapter = FavoriteAdapter { place ->
-            favoriteViewModel.deleteFavoritePlace(place)
+            favoriteViewModel.removeFavoritePlaces(place, false)
         }
 
         // Load data from the local database to get list favorite parking place
@@ -56,6 +56,7 @@ class FavoriteFragment : Fragment() {
                 favoriteAdapter.submitList(places)
                 binding.emptyFavorite.isVisible = false
             } else {
+                favoriteAdapter.submitList(emptyList())
                 binding.emptyFavorite.isVisible = true
             }
         }

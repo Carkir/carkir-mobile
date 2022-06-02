@@ -12,7 +12,6 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.bangkit.capstone.carkirapp.R
 import com.bangkit.capstone.carkirapp.data.Resource
 import com.bangkit.capstone.carkirapp.data.remote.response.PlacesResponseItem
@@ -100,7 +99,7 @@ class HomeFragment : Fragment() {
      * Hide the text info and put the data to the adapter
      * */
     private fun showResult(data: List<PlacesResponseItem>?) {
-        binding.containerUnexpected.isVisible = false
+        showProgressBarAndTextInfo(false)
         placesAdapter.submitList(data)
     }
 
@@ -109,8 +108,8 @@ class HomeFragment : Fragment() {
      * Show text info with the message
      * */
     private fun onLoading() {
-        binding.containerUnexpected.isVisible = true
         binding.tvMessageUnexpected.text = getString(R.string.carkir_home_info_loading)
+        showProgressBarAndTextInfo(true)
     }
 
     /**
@@ -118,8 +117,17 @@ class HomeFragment : Fragment() {
      * Show text info with the message
      * */
     private fun onError() {
-        binding.containerUnexpected.isVisible = true
         binding.tvMessageUnexpected.text = getString(R.string.carkir_home_info_error)
+        showProgressBarAndTextInfo(true)
+    }
+
+    /**
+     * Show progress bar and text info
+     * for state loading or error
+     * */
+    private fun showProgressBarAndTextInfo(isShowing: Boolean) {
+        binding.progressBar.isVisible = isShowing
+        binding.tvMessageUnexpected.isVisible = isShowing
     }
 
     /**

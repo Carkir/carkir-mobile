@@ -10,8 +10,8 @@ data class DetailPlaceResponse(
 	@field:SerializedName("name")
 	val name: String,
 
-	@field:SerializedName("location")
-	val location: List<String>,
+	@field:SerializedName("clusterCount")
+	val clusterCount: List<String>,
 
 	@field:SerializedName("time")
 	val time: String,
@@ -29,5 +29,7 @@ data class DetailPlaceResponse(
 	val address: String,
 
 	@field:SerializedName("image")
-	val image: String
+	val image: String,
+
+	var isFavorite: Boolean,
 )

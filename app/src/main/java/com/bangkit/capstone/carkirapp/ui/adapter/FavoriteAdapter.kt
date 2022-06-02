@@ -6,12 +6,12 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.capstone.carkirapp.data.local.entity.FavoriteEntity
+import com.bangkit.capstone.carkirapp.data.local.entity.PlacesEntity
 import com.bangkit.capstone.carkirapp.databinding.CardItemFavoriteBinding
 import com.bangkit.capstone.carkirapp.ui.favorite.FavoriteFragmentDirections
 
-class FavoriteAdapter(val onItemClicked: (FavoriteEntity) -> Unit) :
-    ListAdapter<FavoriteEntity, FavoriteAdapter.FavoriteViewHolder>(mDiffCallback) {
+class FavoriteAdapter(val onItemClicked: (PlacesEntity) -> Unit) :
+    ListAdapter<PlacesEntity, FavoriteAdapter.FavoriteViewHolder>(mDiffCallback) {
 
     // Inflate the layout for items
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
@@ -30,7 +30,7 @@ class FavoriteAdapter(val onItemClicked: (FavoriteEntity) -> Unit) :
     class FavoriteViewHolder(val binding: CardItemFavoriteBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(favoritePlace: FavoriteEntity) {
+        fun bind(favoritePlace: PlacesEntity) {
             binding.apply {
                 tvTimeItemFavorite.text = favoritePlace.time
                 tvNameItemFavorite.text = favoritePlace.name
@@ -39,9 +39,10 @@ class FavoriteAdapter(val onItemClicked: (FavoriteEntity) -> Unit) :
 
             // Listener to detail parking place with args name place
             itemView.setOnClickListener {
-                val action = FavoriteFragmentDirections.actionNavigationFavoriteToDetailFragment(
-                    favoritePlace.name
-                )
+                val action =
+                    FavoriteFragmentDirections.actionNavigationFavoriteToDetailPlaceActivity(
+                        favoritePlace.name
+                    )
                 it.findNavController().navigate(action)
             }
         }
@@ -52,17 +53,17 @@ class FavoriteAdapter(val onItemClicked: (FavoriteEntity) -> Unit) :
      * Anonymous class for compare the oldList and newList in ListAdapter
      * */
     companion object {
-        private val mDiffCallback = object : DiffUtil.ItemCallback<FavoriteEntity>() {
+        private val mDiffCallback = object : DiffUtil.ItemCallback<PlacesEntity>() {
             override fun areItemsTheSame(
-                oldItem: FavoriteEntity,
-                newItem: FavoriteEntity
+                oldItem: PlacesEntity,
+                newItem: PlacesEntity
             ): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem.name == newItem.name
             }
 
             override fun areContentsTheSame(
-                oldItem: FavoriteEntity,
-                newItem: FavoriteEntity
+                oldItem: PlacesEntity,
+                newItem: PlacesEntity
             ): Boolean {
                 return oldItem == newItem
             }

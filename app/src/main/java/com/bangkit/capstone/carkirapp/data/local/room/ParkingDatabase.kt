@@ -4,29 +4,28 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.bangkit.capstone.carkirapp.data.local.entity.FavoriteEntity
-import com.bangkit.capstone.carkirapp.data.local.entity.HistoryEntity
+import com.bangkit.capstone.carkirapp.data.local.entity.PlacesEntity
 
 // TODO refactoring and fixed entity
 
 @Database(
-    entities = [HistoryEntity::class, FavoriteEntity::class],
+    entities = [PlacesEntity::class],
     version = 1,
     exportSchema = false
 )
-abstract class LocationDatabase : RoomDatabase() {
+abstract class ParkingDatabase : RoomDatabase() {
 
-    abstract fun locationDao(): LocationDao
+    abstract fun placeDao(): PlaceDao
 
     companion object {
         @Volatile
-        private var INSTANCE: LocationDatabase? = null
+        private var INSTANCE: ParkingDatabase? = null
 
-        fun getInstance(context: Context): LocationDatabase =
+        fun getInstance(context: Context): ParkingDatabase =
             INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    LocationDatabase::class.java,
+                    ParkingDatabase::class.java,
                     "Location.db"
                 )
                     .fallbackToDestructiveMigration()

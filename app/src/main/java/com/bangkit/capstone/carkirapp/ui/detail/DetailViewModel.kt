@@ -4,13 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.bangkit.capstone.carkirapp.data.AppRepository
-import com.bangkit.capstone.carkirapp.data.local.entity.FavoriteEntity
-import com.bangkit.capstone.carkirapp.data.local.entity.HistoryEntity
+import com.bangkit.capstone.carkirapp.data.local.entity.PlacesEntity
 import kotlinx.coroutines.launch
 
 class DetailViewModel(private val repo: AppRepository) : ViewModel() {
+    fun loadDetailParkingPlace(token: String, name: String) =
+        repo.getPlaceDetail(token, name).asLiveData()
 
-    fun loadDetailParkingPlace(token: String, name: String) = repo.getParkingPlace(token, name).asLiveData()
     fun loadTokenFromDataStore() = repo.getTokenFromDataStore().asLiveData()
 
     fun requestToken() {
@@ -19,24 +19,15 @@ class DetailViewModel(private val repo: AppRepository) : ViewModel() {
         }
     }
 
-    // Operation to add parking place to history local database
-    fun addPlaceToHistory(place: HistoryEntity) {
+    fun addPlace(place: PlacesEntity) {
         viewModelScope.launch {
-            repo.addPlaceToHistory(place)
+            repo.insertPlaces(place)
         }
     }
 
-    // Operation to add parking place to local database
-    fun addPlaceToFavorite(place: FavoriteEntity) {
+    fun updateFavoritePlace(name: String, newState: Boolean) {
         viewModelScope.launch {
-            repo.insertFavoritePlace(place)
-        }
-    }
-
-    // Operation to remove parking place from local database
-    fun removePlaceFromFavorite(place: FavoriteEntity) {
-        viewModelScope.launch {
-            repo.deleteFavoritePlace(place)
+            repo.updateFavoriteDetail(name, newState)
         }
     }
 }

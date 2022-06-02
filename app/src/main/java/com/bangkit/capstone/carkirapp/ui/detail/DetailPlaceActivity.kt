@@ -2,88 +2,73 @@ package com.bangkit.capstone.carkirapp.ui.detail
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
+import androidx.navigation.navArgs
 import com.bangkit.capstone.carkirapp.R
 import com.bangkit.capstone.carkirapp.data.Resource
-import com.bangkit.capstone.carkirapp.data.local.entity.HistoryEntity
+import com.bangkit.capstone.carkirapp.data.local.entity.PlacesEntity
 import com.bangkit.capstone.carkirapp.data.remote.response.DetailPlaceResponse
-import com.bangkit.capstone.carkirapp.databinding.FragmentDetailBinding
+import com.bangkit.capstone.carkirapp.databinding.ActivityDetailPlaceBinding
 import com.bangkit.capstone.carkirapp.model.FloorAndClusterModel
 import com.bangkit.capstone.carkirapp.model.ViewModelFactory
 import com.bangkit.capstone.carkirapp.ui.adapter.FloorAndClusterAdapter
-import com.bangkit.capstone.carkirapp.utils.decodeBase64ToBitmap
-import com.bangkit.capstone.carkirapp.utils.loadImage
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
-class DetailFragment : Fragment() {
+class DetailPlaceActivity : AppCompatActivity() {
 
     // Declaration for adapter
     private lateinit var floorAdapter: FloorAndClusterAdapter
 
     // Declaration for binding view
-    private var _binding: FragmentDetailBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityDetailPlaceBinding
 
     // View Model initialization using delegate by viewModels
     private val detailViewModel: DetailViewModel by viewModels {
-        ViewModelFactory.getInstance(
-            requireContext(),
-            requireContext().dataStore
-        )
+        ViewModelFactory.getInstance(this.applicationContext, dataStore)
     }
 
     // Receive args from other Fragments to get the name of parking place
     // Detail can see on res/navigation/mobile_navigation
-    private val args: DetailFragmentArgs by navArgs()
+    private val args: DetailPlaceActivityArgs by navArgs()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentDetailBinding.inflate(inflater, container, false)
-        detailViewModel.requestToken() // request token before call private API
-        return binding.root
-    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityDetailPlaceBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        // Set title action bar and display icon back
+        supportActionBar?.title = getString(R.string.carkir_title_detail)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        // request token before call private API
+        detailViewModel.requestToken()
 
         val namePlace = args.namePlace
         floorAdapter = FloorAndClusterAdapter()
 
         // Load token from local data store
         // This token for call private API in the server
-        detailViewModel.loadTokenFromDataStore().observe(viewLifecycleOwner) { token ->
+        detailViewModel.loadTokenFromDataStore().observe(this) { token ->
 
             // Load data from the server to get detail data parking place
             // Response will be checking, if not null, data will be execute it based on the state
             detailViewModel.loadDetailParkingPlace(token, namePlace)
-                .observe(viewLifecycleOwner) { response ->
+                .observe(this) { response ->
                     if (response != null) {
                         when (response) {
-                            is Resource.Loading -> {} // TODO HANDLE LOADING STATE
+                            is Resource.Loading -> onLoading()
                             is Resource.Success -> showDetailPlace(response.data)
-                            is Resource.Error -> {
-                                Log.d("DetailFragment", response.message.toString())
-                            } // TODO HANDLE ERROR STATE
+                            is Resource.Error -> onError()
                         }
                     }
                 }
-        }
-
-        binding.fabFavoriteLocation.setOnClickListener {
-            // TODO ADD OR REMOVE FAVORITE PARKING PLACE
         }
 
         // Set adapter to recycler view
@@ -91,37 +76,108 @@ class DetailFragment : Fragment() {
     }
 
     /**
+     * Handle state when response is Error
+     * Show image and text for information
+     * */
+    private fun onLoading() {
+        showingInfo(isContainerShow = true, isMessageShow = false, isProgressBarShow = true)
+    }
+
+    /**
+     * Handle state when response is Error
+     * Show image and text for information
+     * */
+    private fun onError() {
+        showingInfo(isContainerShow = true, isMessageShow = true, isProgressBarShow = false)
+    }
+
+    /**
+     * Show or hide image and info text for all states
+     * */
+    private fun showingInfo(
+        isContainerShow: Boolean,
+        isMessageShow: Boolean,
+        isProgressBarShow: Boolean
+    ) {
+        with(binding) {
+            containerState.isVisible = isContainerShow
+            tvErrorDetail.isVisible = isMessageShow
+            tvErrorDescription.isVisible = isMessageShow
+            progressBar.isVisible = isProgressBarShow
+        }
+    }
+
+    /**
      * Handle state when response is Success.
      * The data response will be binding to the layout.
      * */
     private fun showDetailPlace(data: DetailPlaceResponse?) {
-        if (data == null) return
+        if (data == null) {
+            showingInfo(isContainerShow = true, isMessageShow = true, isProgressBarShow = false)
+            return
+        }
 
-        val (priceLow, name, location, time, totalEmptySpace, priceHigh, status, alamat, image) = data
+        showingInfo(isContainerShow = false, isMessageShow = false, isProgressBarShow = false)
+        val (priceLow, name, clusterCount, time, totalEmptySpace, priceHigh, status, address, image, isFavorite) = data
         binding.apply {
             // TODO UNCOMMENT THE CODE IF IMAGE IS FIXED
             // val bitmap = image.decodeBase64ToBitmap()
             // ivPlaceDetail.loadImage(requireContext(), bitmap)
-            tvStatusPlaceDetail.text = status
+            tvStatusPlaceDetail.text = status.replaceFirstChar { it.uppercase() }
             tvTimePlaceDetail.text = time
             tvNamePlaceDetail.text = name
-            tvAddressPlaceDetail.text = alamat
+            tvAddressPlaceDetail.text = address
             tvPriceFirstHour.text = getString(R.string.carkir_detail_price_low, priceLow)
             tvPriceNextHour.text = getString(R.string.carkir_detail_price_high, priceHigh)
             tvTotalEmptySpacePlaceDetail.text =
                 getString(R.string.carkir_detail_title_space, totalEmptySpace)
         }
 
-        // Add history parking place
-        detailViewModel.addPlaceToHistory(
-            HistoryEntity(
-                name = name,
-                totalSpace = totalEmptySpace,
-                time = time
+        // Listener and updating state favorite button
+        var statusFavorite = isFavorite
+        setStatusFavorite(statusFavorite)
+        binding.fabFavoriteLocation.setOnClickListener {
+            statusFavorite = !statusFavorite
+            detailViewModel.updateFavoritePlace(name, statusFavorite)
+            setStatusFavorite(statusFavorite)
+        }
+
+        // Add parking place to histories
+        detailViewModel.addPlace(
+            PlacesEntity(
+                name,
+                time,
+                status,
+                address,
+                priceHigh,
+                priceLow,
+                totalEmptySpace,
+                isAlreadySee = true,
+                isFavorite = statusFavorite
             )
         )
 
-        showFloorAndClusters(name, location)
+        // Handle the data for adapter
+        showFloorAndClusters(name, clusterCount)
+    }
+
+    /**
+     * Changing icon favorite based on state status favorite
+     * */
+    private fun setStatusFavorite(statusFavorite: Boolean) {
+        if (statusFavorite) {
+            binding.fabFavoriteLocation.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this, R.drawable.ic_favorite_24
+                )
+            )
+        } else { // If not favorite place
+            binding.fabFavoriteLocation.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this, R.drawable.ic_favorite_border_24
+                )
+            )
+        }
     }
 
     /**
@@ -137,7 +193,7 @@ class DetailFragment : Fragment() {
         }
     }
 
-    // TODO DOCUMENTATION
+    // TODO DOCUMENTATION AND REFACTORING
     private fun modifiedFloorClusters(
         name: String,
         cluster: List<String>
@@ -182,12 +238,10 @@ class DetailFragment : Fragment() {
     }
 
     /**
-     * Set _binding to null when fragment is close
-     * to avoid memory-leak.
+     * Handle icon back navigation on actionbar
      * */
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
-
 }

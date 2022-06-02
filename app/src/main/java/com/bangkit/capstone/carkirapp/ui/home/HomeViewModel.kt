@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repo: AppRepository) : ViewModel() {
     fun getAllParkingPlaces(token: String) = repo.getAllParkingPlace(token).asLiveData()
-    fun getRecentParkingPlaces() = repo.getRecentParkingPlace().asLiveData()
+    fun getRecentParkingPlaces() = repo.getRecentPlaces().asLiveData()
     fun loadTokenFromDataStore() = repo.getTokenFromDataStore().asLiveData()
 
     fun requestToken() {
