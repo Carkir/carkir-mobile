@@ -10,10 +10,8 @@ import com.bangkit.capstone.carkirapp.R
 import com.bangkit.capstone.carkirapp.data.remote.response.PlacesResponseItem
 import com.bangkit.capstone.carkirapp.databinding.CardItemLocationBinding
 import com.bangkit.capstone.carkirapp.ui.home.HomeFragmentDirections
-import com.bangkit.capstone.carkirapp.utils.decodeBase64ToBitmap
-import com.bangkit.capstone.carkirapp.utils.loadImage
 
-class PlacesAdapter() :
+class PlacesAdapter :
     ListAdapter<PlacesResponseItem, PlacesAdapter.PlacesViewHolder>(mDiffCallback) {
 
     // Inflate the layout for items
@@ -49,7 +47,7 @@ class PlacesAdapter() :
 
             // Listener to detail parking place with args name place
             itemView.setOnClickListener {
-                val action = HomeFragmentDirections.actionNavigationHomeToDetailFragment(name)
+                val action = HomeFragmentDirections.actionNavigationHomeToDetailPlaceActivity(name)
                 it.findNavController().navigate(action)
             }
         }

@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.capstone.carkirapp.R
-import com.bangkit.capstone.carkirapp.data.local.entity.HistoryEntity
+import com.bangkit.capstone.carkirapp.data.local.entity.PlacesEntity
 import com.bangkit.capstone.carkirapp.databinding.CardItemRecentBinding
 import com.bangkit.capstone.carkirapp.ui.history.HistoryFragmentDirections
 
-class HistoryAdapter(val onItemClicked: (HistoryEntity) -> Unit) :
-    ListAdapter<HistoryEntity, HistoryAdapter.HistoryViewHolder>(mDiffCallback) {
+class HistoryAdapter(val onItemClicked: (PlacesEntity) -> Unit) :
+    ListAdapter<PlacesEntity, HistoryAdapter.HistoryViewHolder>(mDiffCallback) {
 
     // Inflate the layout for items
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
@@ -32,10 +32,10 @@ class HistoryAdapter(val onItemClicked: (HistoryEntity) -> Unit) :
     // Binding data item to view layout
     class HistoryViewHolder(val binding: CardItemRecentBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(place: HistoryEntity) {
+        fun bind(place: PlacesEntity) {
             binding.apply {
                 tvNameItemRecent.text = place.name
-                tvTimeItemLocation.text =  itemView.resources.getString(
+                tvTimeItemLocation.text = itemView.resources.getString(
                     R.string.carkir_card_see_at,
                     place.insertAt
                 )
@@ -48,7 +48,8 @@ class HistoryAdapter(val onItemClicked: (HistoryEntity) -> Unit) :
 
             // Listener to detail parking place with args name place
             itemView.setOnClickListener {
-                val action = HistoryFragmentDirections.actionNavigationHistoryToDetailFragment(place.name)
+                val action =
+                    HistoryFragmentDirections.actionNavigationHistoryToDetailPlaceActivity(place.name)
                 it.findNavController().navigate(action)
             }
         }
@@ -59,17 +60,17 @@ class HistoryAdapter(val onItemClicked: (HistoryEntity) -> Unit) :
      * Anonymous class for compare the oldList and newList in ListAdapter
      * */
     companion object {
-        private val mDiffCallback = object : DiffUtil.ItemCallback<HistoryEntity>() {
+        private val mDiffCallback = object : DiffUtil.ItemCallback<PlacesEntity>() {
             override fun areItemsTheSame(
-                oldItem: HistoryEntity,
-                newItem: HistoryEntity
+                oldItem: PlacesEntity,
+                newItem: PlacesEntity
             ): Boolean {
                 return oldItem.name == newItem.name
             }
 
             override fun areContentsTheSame(
-                oldItem: HistoryEntity,
-                newItem: HistoryEntity
+                oldItem: PlacesEntity,
+                newItem: PlacesEntity
             ): Boolean {
                 return oldItem == newItem
             }

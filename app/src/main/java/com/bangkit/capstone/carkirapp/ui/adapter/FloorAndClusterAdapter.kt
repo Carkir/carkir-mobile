@@ -1,15 +1,15 @@
 package com.bangkit.capstone.carkirapp.ui.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.capstone.carkirapp.R
 import com.bangkit.capstone.carkirapp.databinding.CardItemParkingBinding
 import com.bangkit.capstone.carkirapp.model.FloorAndClusterModel
-import com.bangkit.capstone.carkirapp.ui.detail.DetailFragmentDirections
+import com.bangkit.capstone.carkirapp.ui.parking.ParkingLayoutActivity
 
 class FloorAndClusterAdapter :
     ListAdapter<FloorAndClusterModel, FloorAndClusterAdapter.FloorAndClusterViewHolder>(
@@ -45,9 +45,9 @@ class FloorAndClusterAdapter :
 
                 // Listener to occupancy and floor parking place with args Parcelable
                 itemView.setOnClickListener {
-                    val action =
-                        DetailFragmentDirections.actionDetailFragmentToParkingFragment(item)
-                    it.findNavController().navigate(action)
+                    val intent = Intent(itemView.context, ParkingLayoutActivity::class.java)
+                    intent.putExtra(ParkingLayoutActivity.EXTRA_ITEM, item)
+                    itemView.context.startActivity(intent)
                 }
             }
         }
