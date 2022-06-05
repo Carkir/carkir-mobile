@@ -17,5 +17,5 @@ data class PlacesResponseItem(
 	val status: String,
 
 	@field:SerializedName("image")
-	val image: String
+	val image: String?
 )
