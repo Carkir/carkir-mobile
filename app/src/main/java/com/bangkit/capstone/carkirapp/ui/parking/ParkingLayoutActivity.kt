@@ -16,6 +16,7 @@ import com.bangkit.capstone.carkirapp.databinding.ActivityParkingLayoutBinding
 import com.bangkit.capstone.carkirapp.model.FloorAndClusterModel
 import com.bangkit.capstone.carkirapp.model.ViewModelFactory
 import com.bangkit.capstone.carkirapp.ui.adapter.ParkingAdapter
+import com.bangkit.capstone.carkirapp.utils.calculateAutoColumns
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -72,7 +73,8 @@ class ParkingLayoutActivity : AppCompatActivity() {
         // Set layout manager and adapter to the recycler view
         // Using GridLayout with each row have four data
         binding.rvSpace.apply {
-            layoutManager = GridLayoutManager(this@ParkingLayoutActivity, 4)
+            val autoColumns = calculateAutoColumns(this, 74)
+            layoutManager = GridLayoutManager(this@ParkingLayoutActivity, autoColumns)
             adapter = parkingAdapter
         }
 
