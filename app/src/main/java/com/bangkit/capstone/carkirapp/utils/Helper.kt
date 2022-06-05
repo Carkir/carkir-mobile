@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
 import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 /**
@@ -24,4 +25,13 @@ fun ImageView.loadImage(context: Context, source: Any) {
 fun String.decodeBase64ToBitmap(): Bitmap {
     val decodedString = Base64.decode(this, Base64.DEFAULT)
     return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+}
+
+/**
+ * Calculate number of columns based width of items
+ * @return number of columns
+ */
+fun calculateAutoColumns(rv: RecyclerView, columnWidth: Int): Int {
+    val displayMetrics = rv.context.resources.displayMetrics
+    return ((displayMetrics.widthPixels / displayMetrics.density) / columnWidth).toInt()
 }
