@@ -18,13 +18,13 @@ import kotlinx.coroutines.flow.Flow
 interface PlaceDao {
 
     // Place Operations
-    @Query("SELECT * FROM places WHERE isFavorite = 1")
+    @Query("SELECT * FROM places WHERE isFavorite = 1 ORDER BY name")
     fun getFavorites(): Flow<List<PlacesEntity>>
 
     @Query("SELECT * FROM places WHERE isAlreadySee = 1 ORDER BY insertAt DESC")
     fun getHistories(): Flow<List<PlacesEntity>>
 
-    @Query("SELECT * FROM places WHERE isAlreadySee = 1 ORDER BY insertAt DESC LIMIT 3")
+    @Query("SELECT * FROM places WHERE isAlreadySee = 1 ORDER BY insertAt DESC LIMIT 5")
     fun getRecentPlaces(): Flow<List<PlacesEntity>>
 
     @Query("UPDATE places SET isAlreadySee = 0 WHERE isAlreadySee = 1")
