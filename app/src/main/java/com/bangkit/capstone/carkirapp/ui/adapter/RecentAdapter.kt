@@ -11,6 +11,8 @@ import com.bangkit.capstone.carkirapp.R
 import com.bangkit.capstone.carkirapp.data.local.entity.PlacesEntity
 import com.bangkit.capstone.carkirapp.databinding.CardItemRecentBinding
 import com.bangkit.capstone.carkirapp.ui.home.HomeFragmentDirections
+import com.bangkit.capstone.carkirapp.utils.decodeBase64ToBitmap
+import com.bangkit.capstone.carkirapp.utils.loadImage
 
 class RecentAdapter : ListAdapter<PlacesEntity, RecentAdapter.RecentViewHolder>(mDiffCallback) {
 
@@ -32,6 +34,10 @@ class RecentAdapter : ListAdapter<PlacesEntity, RecentAdapter.RecentViewHolder>(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(place: PlacesEntity) {
             binding.apply {
+                place.image?.let {
+                    val bitmap = it.decodeBase64ToBitmap()
+                    ivThumbnailItemRecent.loadImage(itemView.context, bitmap)
+                }
                 tvNameItemRecent.text = place.name
                 tvTimeItemLocation.text = itemView.resources.getString(
                     R.string.carkir_card_see_at,

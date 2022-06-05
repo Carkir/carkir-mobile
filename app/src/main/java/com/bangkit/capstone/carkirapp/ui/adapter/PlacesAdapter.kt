@@ -10,6 +10,8 @@ import com.bangkit.capstone.carkirapp.R
 import com.bangkit.capstone.carkirapp.data.remote.response.PlacesResponseItem
 import com.bangkit.capstone.carkirapp.databinding.CardItemLocationBinding
 import com.bangkit.capstone.carkirapp.ui.home.HomeFragmentDirections
+import com.bangkit.capstone.carkirapp.utils.decodeBase64ToBitmap
+import com.bangkit.capstone.carkirapp.utils.loadImage
 
 class PlacesAdapter :
     ListAdapter<PlacesResponseItem, PlacesAdapter.PlacesViewHolder>(mDiffCallback) {
@@ -33,9 +35,10 @@ class PlacesAdapter :
         fun bind(place: PlacesResponseItem) {
             val (name, time, totalEmptySpace, status, image) = place
             binding.apply {
-                // TODO UNCOMMENT THE CODE IF IMAGE IS FIXED
-                // val bitmap = image.decodeBase64ToBitmap()
-                // ivThumbnailItemLocation.loadImage(itemView.context, bitmap)
+                image?.let {
+                    val bitmap = it.decodeBase64ToBitmap()
+                    ivThumbnailItemLocation.loadImage(itemView.context, bitmap)
+                }
                 tvNameItemLocation.text = name
                 tvStatusItemLocation.text = status
                 tvTimeItemLocation.text = time
