@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.capstone.carkirapp.R
 import com.bangkit.capstone.carkirapp.data.local.entity.PlacesEntity
-import com.bangkit.capstone.carkirapp.databinding.CardItemRecentBinding
+import com.bangkit.capstone.carkirapp.databinding.CardItemHistoriesBinding
 import com.bangkit.capstone.carkirapp.ui.history.HistoryFragmentDirections
+import com.bangkit.capstone.carkirapp.utils.decodeBase64ToBitmap
+import com.bangkit.capstone.carkirapp.utils.loadImage
 
 class HistoryAdapter(val onItemClicked: (PlacesEntity) -> Unit) :
     ListAdapter<PlacesEntity, HistoryAdapter.HistoryViewHolder>(mDiffCallback) {
@@ -18,7 +20,7 @@ class HistoryAdapter(val onItemClicked: (PlacesEntity) -> Unit) :
     // Inflate the layout for items
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = CardItemRecentBinding.inflate(layoutInflater, parent, false)
+        val binding = CardItemHistoriesBinding.inflate(layoutInflater, parent, false)
         return HistoryViewHolder(binding)
     }
 
@@ -30,10 +32,14 @@ class HistoryAdapter(val onItemClicked: (PlacesEntity) -> Unit) :
     }
 
     // Binding data item to view layout
-    class HistoryViewHolder(val binding: CardItemRecentBinding) :
+    class HistoryViewHolder(val binding: CardItemHistoriesBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(place: PlacesEntity) {
             binding.apply {
+                place.image?.let {
+                    val bitmap = it.decodeBase64ToBitmap()
+                    ivThumbnailItemRecent.loadImage(itemView.context, bitmap)
+                }
                 tvNameItemRecent.text = place.name
                 tvTimeItemLocation.text = itemView.resources.getString(
                     R.string.carkir_card_see_at,
