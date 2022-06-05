@@ -13,10 +13,10 @@
         android:layout_height="0dp"
         android:contentDescription="@string/carkir_contentDescription_imageView_card_location"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@id/guidelineHorizontalFirst"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/guidelineHorizontalFirst"
         tools:srcCompat="@tools:sample/avatars" />
 
     <!-- STATUS -->
@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:textColor="?colorSecondaryVariant"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_place_detail"
         tools:text="Buka" />
@@ -36,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:textColor="?colorSecondaryVariant"
         app:layout_constraintBottom_toBottomOf="@id/tv_status_place_detail"
         app:layout_constraintStart_toEndOf="@id/tv_status_place_detail"
         app:layout_constraintTop_toTopOf="@id/tv_status_place_detail"
@@ -49,6 +51,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
+        android:textColor="?colorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,6 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:textColor="?colorSecondary"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_address_place_detail"
-        app:strokeColor="@color/dark"
+        app:strokeColor="?colorPrimary"
         app:strokeWidth="1dp">
 
         <LinearLayout
@@ -100,6 +104,7 @@
                 android:id="@+id/tv_price_first_hour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="?colorSecondary"
                 android:textStyle="bold"
                 tools:text="Rp 4.000 - Rp 7.500 untuk satu jam pertama." />
 
@@ -108,6 +113,7 @@
                 android:id="@+id/tv_price_next_hour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="?colorSecondary"
                 android:textStyle="bold"
                 tools:text="Rp 2.000 - Rp 6.000 untuk setiap jam berikutnya." />
         </LinearLayout>
@@ -121,6 +127,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:textColor="?colorPrimary"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -152,6 +159,7 @@
         android:layout_margin="16dp"
         android:text="@string/carkir_detail_empty_floor"
         android:textAlignment="center"
+        android:textColor="?colorSecondary"
         android:textSize="18sp"
         android:textStyle="bold"
         android:visibility="gone"
@@ -179,7 +187,7 @@
         android:id="@+id/container_state"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="?attr/colorBackgroundFloating"
+        android:background="?colorOnPrimary"
         android:elevation="8dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -193,8 +201,8 @@
             android:layout_height="300dp"
             android:layout_centerInParent="true"
             android:contentDescription="@string/carkir_contentDescription_imageView_offline"
-            android:visibility="gone"
-            app:srcCompat="@drawable/ic_offline_custom" />
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_offline" />
 
         <TextView
             android:id="@+id/tv_error_detail"
@@ -206,6 +214,7 @@
             android:layout_marginEnd="16dp"
             android:text="@string/carkir_detail_title_offline"
             android:textAlignment="center"
+            android:textColor="?colorSecondary"
             android:textSize="18sp"
             android:textStyle="bold"
             android:visibility="gone" />
@@ -219,6 +228,7 @@
             android:layout_marginEnd="16dp"
             android:text="@string/carkir_detail_description_offline"
             android:textAlignment="center"
+            android:textColor="?colorSecondary"
             android:textStyle="bold"
             android:visibility="gone" />
 

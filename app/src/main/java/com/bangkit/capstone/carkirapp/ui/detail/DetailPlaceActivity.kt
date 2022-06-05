@@ -18,6 +18,8 @@ import com.bangkit.capstone.carkirapp.databinding.ActivityDetailPlaceBinding
 import com.bangkit.capstone.carkirapp.model.FloorAndClusterModel
 import com.bangkit.capstone.carkirapp.model.ViewModelFactory
 import com.bangkit.capstone.carkirapp.ui.adapter.FloorAndClusterAdapter
+import com.bangkit.capstone.carkirapp.utils.decodeBase64ToBitmap
+import com.bangkit.capstone.carkirapp.utils.loadImage
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -101,6 +103,7 @@ class DetailPlaceActivity : AppCompatActivity() {
     ) {
         with(binding) {
             containerState.isVisible = isContainerShow
+            ivErrorDetail.isVisible = isMessageShow
             tvErrorDetail.isVisible = isMessageShow
             tvErrorDescription.isVisible = isMessageShow
             progressBar.isVisible = isProgressBarShow
@@ -120,9 +123,10 @@ class DetailPlaceActivity : AppCompatActivity() {
         showingInfo(isContainerShow = false, isMessageShow = false, isProgressBarShow = false)
         val (priceLow, name, clusterCount, time, totalEmptySpace, priceHigh, status, address, image, isFavorite) = data
         binding.apply {
-            // TODO UNCOMMENT THE CODE IF IMAGE IS FIXED
-            // val bitmap = image.decodeBase64ToBitmap()
-            // ivPlaceDetail.loadImage(requireContext(), bitmap)
+            image?.let {
+                val bitmap = it.decodeBase64ToBitmap()
+                ivPlaceDetail.loadImage(this@DetailPlaceActivity, bitmap)
+            }
             tvStatusPlaceDetail.text = status.replaceFirstChar { it.uppercase() }
             tvTimePlaceDetail.text = time
             tvNamePlaceDetail.text = name
@@ -153,7 +157,8 @@ class DetailPlaceActivity : AppCompatActivity() {
                 priceLow,
                 totalEmptySpace,
                 isAlreadySee = true,
-                isFavorite = statusFavorite
+                isFavorite = statusFavorite,
+                image = image
             )
         )
 
