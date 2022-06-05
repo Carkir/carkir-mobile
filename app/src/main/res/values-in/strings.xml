@@ -40,6 +40,7 @@
     <string name="carkir_detail_floor">Lantai %1$d (%2$s)</string>
     <string name="carkir_detail_title_offline">Tidak ada internet</string>
     <string name="carkir_detail_description_offline">Kamu harus terhubung internet untuk mendapatkan data terbaru</string>
+    <string name="carkir_onboarding_button_get_started">Cari tempat parkir</string>
 
     <!-- Parking Layout -->
     <string name="carkir_parking_layout_total_empty_slot">%d Tempat tersisa</string>

@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/carkir_history_title"
+        android:textColor="?colorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/carkir_history_description"
+        android:textColor="?colorSecondary"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="16dp"
-        android:background="?android:listDivider"
+        android:background="?colorSecondaryVariant"
         app:layout_constraintTop_toBottomOf="@id/tv_description_history" />
 
     <!-- LIST HISTORY LOCATION -->
@@ -51,7 +53,7 @@
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/divider"
-        tools:listitem="@layout/card_item_recent" />
+        tools:listitem="@layout/card_item_histories" />
 
     <!-- BUTTON DELETE ALL HISTORY -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -61,7 +63,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="24dp"
         android:contentDescription="@string/carkir_contentDescription_FloatingActionButton_delete"
-        app:backgroundTint="@color/temporary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_delete_all_24" />
@@ -81,17 +82,18 @@
         tools:visibility="visible">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
             android:contentDescription="@string/carkir_contentDescription_imageView_empty"
-            app:srcCompat="@drawable/ic_empty_history" />
+            app:srcCompat="@drawable/ic_empty_histories" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="@string/carkir_history_info_empty"
             android:textAlignment="center"
+            android:textColor="?colorSecondary"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>

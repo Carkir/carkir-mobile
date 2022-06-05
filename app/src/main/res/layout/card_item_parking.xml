@@ -7,9 +7,9 @@
     android:layout_marginStart="2dp"
     android:layout_marginEnd="2dp"
     android:layout_marginBottom="8dp"
-    app:cardBackgroundColor="@color/temporary"
+    app:cardBackgroundColor="?colorSecondary"
     app:cardCornerRadius="10dp"
-    app:cardElevation="2dp">
+    app:cardElevation="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -24,6 +24,7 @@
             android:id="@+id/tv_name_item_parking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="?colorOnPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -35,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:textColor="?colorOnPrimary"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/tv_name_item_parking"
             app:layout_constraintStart_toEndOf="@id/tv_name_item_parking"
@@ -48,6 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:text="@string/carkir_card_detail"
+            android:textColor="?colorOnPrimary"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@id/iv_icon_detail"
             app:layout_constraintEnd_toStartOf="@id/iv_icon_detail"

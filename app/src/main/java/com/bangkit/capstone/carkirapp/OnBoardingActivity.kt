@@ -3,17 +3,20 @@ package com.bangkit.capstone.carkirapp
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.bangkit.capstone.carkirapp.data.local.datastore.DataPreference
 import com.bangkit.capstone.carkirapp.databinding.ActivityOnBoardingBinding
-import kotlinx.coroutines.*
+import com.bangkit.capstone.carkirapp.ui.MainActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -33,7 +36,9 @@ class OnBoardingActivity : AppCompatActivity() {
             val isFirstTime = preferences.loadStateFirstTime().first()
 
             // If not first time redirect to MainActivity
-            if (!isFirstTime) { moveToMainActivity(); return@launch }
+            if (!isFirstTime) {
+                moveToMainActivity(); return@launch
+            }
 
             // If is first time hold on this activity
             // and if user click the button get started it will update the state on datastore

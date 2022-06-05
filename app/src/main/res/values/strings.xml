@@ -13,6 +13,7 @@
     <string name="carkir_onboarding_two_description">Having trouble finding a parking space? We make it easy for you!</string>
     <string name="carkir_onboarding_three_title">One Destination</string>
     <string name="carkir_onboarding_three_description">Just looking at the smartphone, you will know the destination of the available parking space.</string>
+    <string name="carkir_onboarding_button_get_started">Find a parking place</string>
 
     <!-- Home -->
     <string name="carkir_home_hint_searchbar">Find a Parking Space</string>
@@ -42,10 +43,10 @@
     <string name="carkir_detail_description_offline">You have use internet to refresh the data</string>
 
     <!-- Parking Layout -->
-    <string name="carkir_parking_layout_total_empty_slot">%d Tempat tersisa</string>
-    <string name="carkir_parking_layout_name_parking">Parkir %s</string>
-    <string name="carkir_parking_layout_availability_slot">Tersedia</string>
-    <string name="carkir_parking_layout_not_availability_slot">Tidak Tersedia</string>
+    <string name="carkir_parking_layout_total_empty_slot">%d Places left</string>
+    <string name="carkir_parking_layout_name_parking">Area %s</string>
+    <string name="carkir_parking_layout_availability_slot">Available</string>
+    <string name="carkir_parking_layout_not_availability_slot">Not Available</string>
     <string name="carkir_parking_layout_empty_slot_parking">Parking layout not available</string>
 
     <!-- Card Item -->

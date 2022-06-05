@@ -29,7 +29,7 @@ data class DetailPlaceResponse(
 	val address: String,
 
 	@field:SerializedName("image")
-	val image: String,
+	val image: String?,
 
 	var isFavorite: Boolean,
 )

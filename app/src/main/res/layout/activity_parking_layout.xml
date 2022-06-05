@@ -15,6 +15,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:textAlignment="center"
+        android:textColor="?colorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +31,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="?colorPrimary"
         app:cardCornerRadius="10dp"
         app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,42 +47,47 @@
                 android:id="@+id/iv_icon_floor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
                 android:contentDescription="@string/carkir_contentDescription_imageView_floor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_layers_24" />
+                app:srcCompat="@drawable/ic_layers_24"
+                app:tint="?colorOnPrimary" />
 
             <TextView
                 android:id="@+id/tv_name_floor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:textColor="?colorOnPrimary"
                 app:layout_constraintBottom_toBottomOf="@id/iv_icon_floor"
                 app:layout_constraintStart_toEndOf="@id/iv_icon_floor"
                 app:layout_constraintTop_toTopOf="@id/iv_icon_floor"
-                tools:text="Lantai 1A - 1C" />
+                tools:text="Area 1A - 1C" />
 
             <ImageView
                 android:id="@+id/iv_icon_space"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:contentDescription="@string/carkir_contentDescription_imageView_slot_availability"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tv_name_floor"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_space_24" />
+                app:srcCompat="@drawable/ic_space_24"
+                app:tint="?colorOnPrimary" />
 
             <TextView
                 android:id="@+id/tv_total_space"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:textColor="?colorOnPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/iv_icon_space"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="10 Tempat tersedia" />
+                tools:text="10 Tempat tersisa" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -106,6 +113,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/carkir_parking_layout_availability_slot"
+        android:textColor="?colorSecondary"
         app:layout_constraintEnd_toStartOf="@id/guidelineVertical"
         app:layout_constraintTop_toBottomOf="@id/cv_info" />
 
@@ -130,6 +138,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:text="@string/carkir_parking_layout_not_availability_slot"
+        android:textColor="?colorSecondary"
         app:layout_constraintStart_toEndOf="@+id/iv_icon_red"
         app:layout_constraintTop_toBottomOf="@id/cv_info" />
 
@@ -151,15 +160,15 @@
     <!-- FOR STATE ERROR -->
     <ImageView
         android:id="@+id/iv_empty_parking"
-        android:layout_width="164dp"
-        android:layout_height="184dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:contentDescription="@string/carkir_contentDescription_imageView_empty"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_title_icon_green"
-        app:srcCompat="@drawable/ic_space_24"
+        app:srcCompat="@drawable/ic_no_parking_layout"
         tools:visibility="visible" />
 
     <!-- FOR STATE ERROR -->
@@ -167,8 +176,10 @@
         android:id="@+id/tv_empty_parking_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/carkir_parking_layout_empty_slot_parking"
         android:textAlignment="center"
+        android:textColor="?colorSecondary"
         android:textSize="20sp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/iv_empty_parking"
@@ -195,7 +206,7 @@
         android:layout_height="64dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.45"
+        app:layout_constraintGuide_percent="0.50"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

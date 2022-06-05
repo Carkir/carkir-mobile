@@ -6,9 +6,12 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bangkit.capstone.carkirapp.R
 import com.bangkit.capstone.carkirapp.data.local.entity.PlacesEntity
 import com.bangkit.capstone.carkirapp.databinding.CardItemFavoriteBinding
 import com.bangkit.capstone.carkirapp.ui.favorite.FavoriteFragmentDirections
+import com.bangkit.capstone.carkirapp.utils.decodeBase64ToBitmap
+import com.bangkit.capstone.carkirapp.utils.loadImage
 
 class FavoriteAdapter(val onItemClicked: (PlacesEntity) -> Unit) :
     ListAdapter<PlacesEntity, FavoriteAdapter.FavoriteViewHolder>(mDiffCallback) {
@@ -32,9 +35,16 @@ class FavoriteAdapter(val onItemClicked: (PlacesEntity) -> Unit) :
 
         fun bind(favoritePlace: PlacesEntity) {
             binding.apply {
+                favoritePlace.image?.let {
+                    val bitmap = it.decodeBase64ToBitmap()
+                    ivThumbnailItemFavorite.loadImage(itemView.context, bitmap)
+                }
                 tvTimeItemFavorite.text = favoritePlace.time
                 tvNameItemFavorite.text = favoritePlace.name
-                tvSpaceItemFavorite.text = favoritePlace.totalSpace.toString()
+                tvSpaceItemFavorite.text = itemView.resources.getString(
+                    R.string.carkir_card_slot_parking,
+                    favoritePlace.totalSpace
+                )
             }
 
             // Listener to detail parking place with args name place
