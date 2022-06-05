@@ -30,6 +30,7 @@
         android:alpha="0"
         android:text="@string/carkir_onboarding_one_title"
         android:textAlignment="center"
+        android:textColor="?colorPrimary"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,8 +43,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:alpha="0"
+        android:background="#07000000"
         android:text="@string/carkir_onboarding_one_description"
         android:textAlignment="center"
+        android:textColor="?colorSecondary"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_title_1"
         app:layout_constraintStart_toStartOf="@+id/tv_title_1"
@@ -72,6 +75,7 @@
         android:alpha="0"
         android:text="@string/carkir_onboarding_two_title"
         android:textAlignment="center"
+        android:textColor="?colorPrimary"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,6 +90,7 @@
         android:alpha="0"
         android:text="@string/carkir_onboarding_two_description"
         android:textAlignment="center"
+        android:textColor="?colorSecondary"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_title_2"
         app:layout_constraintStart_toStartOf="@+id/tv_title_2"
@@ -114,6 +119,7 @@
         android:alpha="0"
         android:text="@string/carkir_onboarding_three_title"
         android:textAlignment="center"
+        android:textColor="?colorPrimary"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -128,6 +134,7 @@
         android:alpha="0"
         android:text="@string/carkir_onboarding_three_description"
         android:textAlignment="center"
+        android:textColor="?colorSecondary"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_title_3"
         app:layout_constraintStart_toStartOf="@+id/tv_title_3"
@@ -136,20 +143,21 @@
     <!-- POSITION SLIDE -->
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/position1"
-        android:layout_width="64dp"
-        android:layout_height="20dp"
+        android:layout_width="42dp"
+        android:layout_height="10dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:alpha="0"
         app:altSrc="@drawable/ic_circle_long"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal2"
-        app:srcCompat="@drawable/ic_circle_long" />
+        app:srcCompat="@drawable/ic_circle_long"
+        app:tint="@android:color/white" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/position2"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="15dp"
+        android:layout_height="10dp"
         android:layout_marginStart="8dp"
         android:alpha="0"
         app:altSrc="@drawable/ic_circle_long"
@@ -159,12 +167,13 @@
         app:layout_constraintStart_toEndOf="@+id/position1"
         app:layout_constraintTop_toTopOf="@+id/position1"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_circle_long" />
+        app:srcCompat="@drawable/ic_circle_long"
+        app:tint="@android:color/white" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/position3"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="15dp"
+        android:layout_height="10dp"
         android:layout_marginStart="8dp"
         android:alpha="0"
         app:altSrc="@drawable/ic_circle_long"
@@ -172,7 +181,8 @@
         app:layout_constraintStart_toEndOf="@+id/position2"
         app:layout_constraintTop_toTopOf="@+id/position2"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_circle_long" />
+        app:srcCompat="@drawable/ic_circle_long"
+        app:tint="@android:color/white" />
 
     <ImageButton
         android:id="@+id/ib_next"
@@ -196,7 +206,7 @@
         android:layout_marginEnd="24dp"
         android:alpha="0"
         android:background="@drawable/roundcorner"
-        android:text="Cari tempat parkir"
+        android:text="@string/carkir_onboarding_button_get_started"
         android:textAllCaps="false"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/position1"

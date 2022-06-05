@@ -46,8 +46,8 @@
             android:layout_marginTop="8dp" />
         <Constraint
             android:id="@+id/position1"
-            android:layout_width="64dp"
-            android:layout_height="20dp"
+            android:layout_width="42dp"
+            android:layout_height="10dp"
             motion:layout_constraintTop_toBottomOf="@id/guidelineHorizontal2"
             android:alpha="1"
             android:layout_marginStart="24dp"
@@ -55,8 +55,8 @@
             android:layout_marginTop="24dp" />
         <Constraint
             android:id="@+id/position2"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="15dp"
+            android:layout_height="10dp"
             android:layout_marginStart="8dp"
             motion:layout_constraintTop_toTopOf="@+id/position1"
             motion:layout_constraintEnd_toStartOf="@+id/position3"
@@ -68,8 +68,8 @@
         <Constraint
             android:id="@+id/position3"
             motion:layout_constraintStart_toEndOf="@+id/position2"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="15dp"
+            android:layout_height="10dp"
             motion:layout_constraintBottom_toBottomOf="@+id/position2"
             motion:layout_constraintVertical_bias="0.0"
             android:alpha="1"
@@ -119,8 +119,8 @@
             android:layout_marginTop="8dp" />
         <Constraint
             android:id="@+id/position1"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="15dp"
+            android:layout_height="10dp"
             android:layout_marginStart="24dp"
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="24dp"
@@ -132,8 +132,8 @@
         </Constraint>
         <Constraint
             android:id="@+id/position2"
-            android:layout_width="64dp"
-            android:layout_height="20dp"
+            android:layout_width="42dp"
+            android:layout_height="10dp"
             android:layout_marginStart="8dp"
             motion:layout_constraintTop_toTopOf="@+id/position1"
             motion:layout_constraintEnd_toStartOf="@+id/position3"
@@ -148,8 +148,8 @@
         </Constraint>
         <Constraint
             android:id="@+id/position3"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="15dp"
+            android:layout_height="10dp"
             android:layout_marginStart="8dp"
             motion:layout_constraintTop_toTopOf="@+id/position2"
             motion:layout_constraintEnd_toStartOf="@+id/menu4"
@@ -264,8 +264,8 @@
             android:layout_marginTop="8dp" />
         <Constraint
             android:id="@+id/position1"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="15dp"
+            android:layout_height="10dp"
             motion:layout_constraintTop_toBottomOf="@id/guidelineHorizontal2"
             android:alpha="1"
             android:layout_marginStart="24dp"
@@ -277,8 +277,8 @@
         </Constraint>
         <Constraint
             android:id="@+id/position2"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="15dp"
+            android:layout_height="10dp"
             android:layout_marginStart="8dp"
             motion:layout_constraintTop_toTopOf="@+id/position1"
             motion:layout_constraintEnd_toStartOf="@+id/position3"
@@ -293,8 +293,8 @@
         </Constraint>
         <Constraint
             android:id="@+id/position3"
-            android:layout_width="64dp"
-            android:layout_height="20dp"
+            android:layout_width="42dp"
+            android:layout_height="10dp"
             android:layout_marginStart="8dp"
             motion:layout_constraintTop_toTopOf="@+id/position2"
             motion:layout_constraintEnd_toStartOf="@+id/menu4"
