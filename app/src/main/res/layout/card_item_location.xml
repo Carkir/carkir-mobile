@@ -5,8 +5,10 @@
     android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
+    app:cardBackgroundColor="@android:color/transparent"
     app:cardCornerRadius="10dp"
-    app:cardElevation="4dp">
+    app:strokeColor="?colorPrimary"
+    app:strokeWidth="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
+            android:textColor="?colorSecondaryVariant"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_thumbnail_item_location"
@@ -42,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:textColor="?colorSecondaryVariant"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@id/tv_status_item_location"
             app:layout_constraintStart_toEndOf="@id/tv_status_item_location"
@@ -58,6 +62,7 @@
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="2"
+            android:textColor="?colorSecondary"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,6 +78,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="12dp"
+            android:textColor="?colorSecondary"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

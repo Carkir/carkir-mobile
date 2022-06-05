@@ -99,7 +99,7 @@ class HomeFragment : Fragment() {
      * Hide the text info and put the data to the adapter
      * */
     private fun showResult(data: List<PlacesResponseItem>?) {
-        showProgressBarAndTextInfo(false)
+        showInfo(isProgressBarShow = false, isImageShow = false, isMessageShow = false)
         placesAdapter.submitList(data)
     }
 
@@ -109,7 +109,7 @@ class HomeFragment : Fragment() {
      * */
     private fun onLoading() {
         binding.tvMessageUnexpected.text = getString(R.string.carkir_home_info_loading)
-        showProgressBarAndTextInfo(true)
+        showInfo(isProgressBarShow = true, isImageShow = false)
     }
 
     /**
@@ -118,16 +118,21 @@ class HomeFragment : Fragment() {
      * */
     private fun onError() {
         binding.tvMessageUnexpected.text = getString(R.string.carkir_home_info_error)
-        showProgressBarAndTextInfo(true)
+        showInfo(isProgressBarShow = false, isImageShow = true)
     }
 
     /**
-     * Show progress bar and text info
+     * Show image, progress bar and text info
      * for state loading or error
      * */
-    private fun showProgressBarAndTextInfo(isShowing: Boolean) {
-        binding.progressBar.isVisible = isShowing
-        binding.tvMessageUnexpected.isVisible = isShowing
+    private fun showInfo(
+        isProgressBarShow: Boolean,
+        isImageShow: Boolean,
+        isMessageShow: Boolean = true
+    ) {
+        binding.progressBar.isVisible = isProgressBarShow
+        binding.ivErrorList.isVisible = isImageShow
+        binding.tvMessageUnexpected.isVisible = isMessageShow
     }
 
     /**
