@@ -7,10 +7,11 @@
     android:layout_marginStart="2dp"
     android:layout_marginEnd="2dp"
     android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="@android:color/transparent"
     app:cardCornerRadius="10dp"
     app:cardElevation="0dp"
-    app:strokeColor="@color/temporary"
-    app:strokeWidth="1dp">
+    app:strokeColor="?colorPrimary"
+    app:strokeWidth="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -46,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
+            android:textColor="?colorSecondaryVariant"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/cv_thumbnail_item_favorite"
             app:layout_constraintTop_toTopOf="@id/cv_thumbnail_item_favorite"
@@ -59,6 +61,7 @@
             android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:maxLines="1"
+            android:textColor="?colorSecondary"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/iv_icon_item_favorite"
@@ -72,6 +75,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
+            android:textColor="?colorSecondary"
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/cv_thumbnail_item_favorite"
