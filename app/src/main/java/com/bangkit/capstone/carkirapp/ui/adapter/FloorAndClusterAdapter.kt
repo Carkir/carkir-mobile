@@ -39,7 +39,7 @@ class FloorAndClusterAdapter :
                     item.rangeClusters
                 )
                 tvEmptySpaceItemParking.text = itemView.resources.getString(
-                    R.string.carkir_detail_title_space,
+                    R.string.carkir_detail_space_floor,
                     item.parkingSpace
                 )
 

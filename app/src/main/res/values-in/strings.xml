@@ -38,6 +38,7 @@
     <string name="carkir_detail_title_space">%d Tempat Parkir Tersedia</string>
     <string name="carkir_detail_empty_floor">Tidak ada tempat parkir</string>
     <string name="carkir_detail_floor">Lantai %1$d (%2$s)</string>
+    <string name="carkir_detail_space_floor">%d Tempat tersedia</string>
     <string name="carkir_detail_title_offline">Tidak ada internet</string>
     <string name="carkir_detail_description_offline">Kamu harus terhubung internet untuk mendapatkan data terbaru</string>
     <string name="carkir_onboarding_button_get_started">Cari tempat parkir</string>

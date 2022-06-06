@@ -39,6 +39,7 @@
     <string name="carkir_detail_empty_floor">No parking space</string>
     <string name="carkir_detail_floor">Level %1$d (%2$s)</string>
     <string name="carkir_detail_title_space">%d Parking Available</string>
+    <string name="carkir_detail_space_floor">%d Space available</string>
     <string name="carkir_detail_title_offline">You\'re Offline</string>
     <string name="carkir_detail_description_offline">You have use internet to refresh the data</string>
 
