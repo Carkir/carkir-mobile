@@ -99,6 +99,11 @@ class HomeFragment : Fragment() {
      * Hide the text info and put the data to the adapter
      * */
     private fun showResult(data: List<PlacesResponseItem>?) {
+        if (data.isNullOrEmpty()) {
+            showInfo(isProgressBarShow = false, isImageShow = true, isMessageShow = true)
+            return
+        }
+
         showInfo(isProgressBarShow = false, isImageShow = false, isMessageShow = false)
         placesAdapter.submitList(data)
     }
