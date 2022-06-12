@@ -190,7 +190,7 @@ class DetailPlaceActivity : AppCompatActivity() {
      * if data is empty just show info message
      * */
     private fun showFloorAndClusters(namePlace: String, floorClusters: List<String>) {
-        if (floorClusters.isNullOrEmpty()) {
+        if (floorClusters.isNullOrEmpty() || floorClusters.size <= 1) {
             binding.tvEmptyClustersParking.isVisible = true
         } else {
             binding.tvEmptyClustersParking.isVisible = false
